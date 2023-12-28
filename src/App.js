@@ -14,8 +14,6 @@ import AccessingHousing from './components/AccessingHousing';
 import DigitalServices from './components/DigitalServices';
 import DevelopingSubsistence from './components/DevelopingSubsistence';
 import DevelopingAccommodation from './components/DevelopingAccommodation';
-import Particles from 'react-tsparticles';
-import particlesConfig from './config/particles-config';
 import ParticlesBackground from './components/ParticlesBackground';
 
 i18n
