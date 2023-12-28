@@ -80,7 +80,7 @@ span {
     background: #233876;
     transform-origin: top;
 }
-#particles {
+#particles-js {
     position: absolute;
     top: 0;
     right: 0;

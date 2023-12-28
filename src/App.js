@@ -14,6 +14,9 @@ import AccessingHousing from './components/AccessingHousing';
 import DigitalServices from './components/DigitalServices';
 import DevelopingSubsistence from './components/DevelopingSubsistence';
 import DevelopingAccommodation from './components/DevelopingAccommodation';
+import Particles from 'react-tsparticles';
+import particlesConfig from './config/particles-config';
+import ParticlesBackground from './components/ParticlesBackground';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -37,6 +40,7 @@ function App() {
 
   return (
     <>
+      <ParticlesBackground />
       <I18nextProvider i18n={i18n}>
         <div className="app w-full text-white pt-8">
           <Navbar t={t} i18n={i18n} />
