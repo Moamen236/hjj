@@ -33,7 +33,7 @@ i18n
 
 function App() {
   const location = useLocation();
-  const [t, i18n] = useTranslation( "global" );
+  const [t, i18n] = useTranslation("global");
 
   return (
     <>
