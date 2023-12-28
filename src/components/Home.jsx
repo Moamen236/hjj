@@ -1,71 +1,147 @@
-import React from 'react'
-import { Card } from 'flowbite-react';
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 const Home = ({ t }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+  };
   return (
     <>
-      <div className='w-full h-screen flex flex-row justify-center items-center text-center'>
-        <div className="container mx-auto">
+      <div className='w-full h-full flex flex-row justify-center items-center py-40'>
+        <div className="w-[75vw] mx-auto">
           <motion.div className="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={transition}
           >
-            <motion.h1 className='text-white mb-15 text-[3vw] mb-20'
+            <div className="image w-1/4 mx-auto mb-10">
+              <img src={process.env.PUBLIC_URL + '/images/logo.png'} className='w-full' alt="" />
+            </div>
+            <motion.h1 className='text-white mb-15 text-[2vw] mb-20 text-center w-[40vw] mx-auto'
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {t('Digital Transformation')}
+              {/* {t('One digital environment to serve pilgrims')} */}
+              تعرف على إستراتيجية التحول الرقمي لخدمة ضيوف الرحمن
             </motion.h1>
-            <div className="grid grid-cols-5 gap-4">
-              <motion.div initial={{ y: 600 }} animate={{ y: 0, transition: { delay: 0.1, duration: 0.6, } }}>
-                <Link to={'/page'}>
-                  <Card className=' h-full hover:scale-105 border-0 hover:bg-blue-900 transition-all ease-in-out duration-300'>
-                    <h5 className="text-2xl font-bold tracking-tight hover:text-white text-black">
-                      {t('Enrich the experience of the pilgrims')}
-                    </h5>
-                  </Card>
+            <div className="grid grid-rows-2 grid-flow-col gap-10">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 0.8, } }}
+                class="transition-all m-2 p-4 relative z-40 group w-[20vw] text-center"
+              >
+                <Link to={'/accessing-housing'}>
+                  <div class="py-2 px-3 relative">
+                    <div className="image w-[12vw] mx-auto">
+                      <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_4.png'} className='w-full' alt=""
+                        whileTap={{ scale: 1.1 }}
+                      />
+                    </div>
+                    <p class="mt-6 text-[0.8vw] text-white">
+                      {/* {t('Learn about the digital transformation to serve the guests of God')} */}
+                      التحول الرقمي لإثراء تجربة ضيوف الرحمن
+                    </p>
+                    <h3 class="mt-3 text-[1vw] font-bold text-main">
+                      {/* {t('Enriching the pilgrim’s experience in accessing housing')} */}
+                      إثراء تجربة الحاج في الوصول للسكن
+                    </h3>
+                  </div>
                 </Link>
               </motion.div>
-              <motion.div initial={{ y: 600 }} animate={{ y: 0, transition: { delay: 0.2, duration: 0.6, } }}>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1.2, duration: 0.8, } }}
+                class="transition-all m-2 p-4 relative z-40 group w-[20vw] text-center"
+              >
                 <Link to={'/page'}>
-                  <Card className='h-full hover:scale-105 border-0 hover:bg-blue-900 hover:text-white text-black transition-all ease-in-out duration-300'>
-                    <h5 className="text-2xl font-bold tracking-tight hover:text-white text-black">
-                      {t('Develop planning, governance and control mechanisms')}
-                    </h5>
-                  </Card>
+                  <div class="py-2 px-3 relative">
+                    <div className="image w-[12vw] mx-auto">
+                      <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_2.png'} className='w-full' alt=""
+                        whileTap={{ scale: 1.1 }}
+                      />
+                    </div>
+                    <p class="mt-6 text-[0.8vw] text-white">
+                      {/* {t("Digital transformation to develop planning, governance and control mechanisms")} */}
+                      التحول الرقمي لتطوير آليات التخطيط والرقابة
+                    </p>
+                    <h3 class="mt-3 text-[1vw] font-bold text-main">
+                      {/* {t("Enriching the pilgrim's experience in accessing housing")} */}
+                      رقابة رقمية لتحسين خدمات الحجاج
+                    </h3>
+                  </div>
                 </Link>
               </motion.div>
-              <motion.div initial={{ y: 600 }} animate={{ y: 0, transition: { delay: 0.3, duration: 0.6, } }}>
+              <div className="grid grid-row-subgrid gap-4 row-span-3">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.6, duration: 0.8, } }}
+                  class="row-start-2 h-fit transition-all m-2 p-4 relative z-40 group w-[22vw] text-center"
+                >
+                  <Link to={'/digital-infrastructure'}
+                    onClick={handleClick}
+                  >
+                    <div class="py-2 px-3 relative">
+                      <div className="image w-[20vw] mx-auto">
+                        <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_1.png'} className='w-full' alt=""
+                          whileTap={{ scale: 1.1 }}
+                        />
+                      </div>
+                      <motion.p class="mt-6 text-[0.8vw] mb-1 text-white"
+                        animate={{ opacity: isClicked ? 0 : 1 }}
+                      >
+                        {/* {t("Digital infrastructure development")} */}
+                        تطوير البنية التحتية الرقمية
+                      </motion.p>
+                      <motion.h2 class="mt-3 text-[1vw] font-bold text-main"
+                        animate={{ opacity: isClicked ? 0 : 1 }}
+                      >
+                        {/* {t("One digital environment to serve pilgrims")} */}
+                        بيئة رقمية واحدة لخدمة الحجاج
+                      </motion.h2>
+                    </div>
+                  </Link>
+                </motion.div>
+              </div>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1.4, duration: 0.8, } }}
+                class="transition-all m-2 p-4 relative z-40 group w-[20vw] text-center"
+              >
                 <Link to={'/page'}>
-                  <Card className='h-full hover:scale-105 border-0 hover:bg-blue-900 hover:text-white text-black transition-all ease-in-out duration-300'>
-                    <h5 className="text-2xl font-bold tracking-tight hover:text-white text-black">
-                      {t('Digital infrastructure development')}
-                    </h5>
-                  </Card>
+                  <div class="py-2 px-3 relative">
+                  <div className="image w-[12vw] mx-auto">
+                      <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_3.png'} className='w-full' alt=""
+                        whileTap={{ scale: 1.1 }}
+                      />
+                    </div>
+                    <p class="mt-6 text-[0.8vw] text-white">
+                      {/* {t('Digital transformation to improve the quality of services provided to the pilgrims')} */}
+                      التحول الرقمي لتطوير جودة الخدمات
+                    </p>
+                    <h3 class="mt-3 text-[1vw] font-bold text-main">
+                      {/* {t('One digital environment to serve pilgrims')} */}
+                      تطوير خدمات الإعاشة الحجاج
+                    </h3>
+                  </div>
                 </Link>
               </motion.div>
-              <motion.div initial={{ y: 600 }} animate={{ y: 0, transition: { delay: 0.4, duration: 0.6, } }}>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1.6, duration: 0.8, } }}
+                class="transition-all m-2 p-4 relative z-40 group w-[20vw] text-center"
+              >
                 <Link to={'/page'}>
-                  <Card className='h-full hover:scale-105 border-0 hover:bg-blue-900 hover:text-white text-black transition-all ease-in-out duration-300'>
-                    <h5 className="text-2xl font-bold tracking-tight hover:text-white text-black">
-                      {t('Improve the quality of services provided to the pilgrims')}
-                    </h5>
-                  </Card>
-                </Link>
-              </motion.div>
-              <motion.div initial={{ y: 600 }} animate={{ y: 0, transition: { delay: 0.5, duration: 0.6, } }}>
-                <Link to={'/page'}>
-                  <Card className='h-full hover:scale-105 border-0 hover:bg-blue-900 hover:text-white text-black transition-all ease-in-out duration-300'>
-                    <h5 className="text-2xl font-bold tracking-tight hover:text-white text-black">
-                      {t("Develop the pilgrims' accommodation services")}
-                    </h5>
-                  </Card>
+                  <div class="py-2 px-3 relative">
+                  <div className="image w-[12vw] mx-auto">
+                        <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_5.png'} className='w-full' alt=""
+                          whileTap={{ scale: 1.1 }}
+                        />
+                      </div>
+                    <p class="mt-6 text-[0.8vw] text-white">
+                      {/* {t("Digital transformation to develop the pilgrims' accommodation service")} */}
+                      التحول الرقمي لتطوير خدمة تسكين الحجاج
+                    </p>
+                    <h3 class="mt-3 text-[1vw] font-bold text-main">
+                      {/* {t("One digital environment to serve pilgrims")} */}
+                      تطوير خدمة تسكين الحجاج
+                    </h3>
+                  </div>
                 </Link>
               </motion.div>
             </div>

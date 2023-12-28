@@ -15,15 +15,15 @@ body{
 }
 
 @font-face {
-    font-family: 'Helveticanowdisplay-Bold';
-    src: url('./fonts/HELVETICANOWDISPLAY-BOLD.TTF');
+    font-family: 'GESS-Bold';
+    src: url('./fonts/GE_SS_Unique_Bold.otf');
     font-style: normal;
     font-weight: Bold;
 }
 
 @font-face {
-    font-family: 'Helveticanowdisplay-Regular';
-    src: url('./fonts/HELVETICANOWDISPLAY-REGULAR.TTF');
+    font-family: 'GESS-Regular';
+    src: url('./fonts/GE_SS_Unique_Light.otf');
     font-style: normal;
     font-weight: normal;
 }
@@ -36,7 +36,7 @@ h5,
 h6,
 strong,
 b {
-    font-family: 'HelveticaNowDisplay-Bold', sans-serif;
+    font-family: 'GESS-Bold', sans-serif;
 }
 
 p,
@@ -58,7 +58,7 @@ td,
 th,
 div,
 span {
-    font-family: 'HelveticaNowDisplay-Regular', sans-serif;
+    font-family: 'GESS-Regular', sans-serif;
 }
 
 .slide-in {
@@ -88,3 +88,8 @@ span {
     height: 100%;
     z-index: -1;
 }
+
+/* .frame{
+    background-image: url('./images/frame.png') center center no-repeat;
+    background-size: cover;
+} */

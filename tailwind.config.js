@@ -5,7 +5,11 @@ module.exports = {
     "node_modules/flowbite-react/lib/esm/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'main': '#00e1ff',
+      },
+    },
     theme: {
       container: {
         center: true,

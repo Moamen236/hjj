@@ -11,8 +11,8 @@ const Navbar = ({ t, i18n }) => {
   }
 
   return (
-    <nav className='fixed top-10 left-0 w-full'>
-      <div className="container mx-auto">
+    <nav className='fixed top-10 left-0 w-full z-50'>
+      <div className="xl:container mx-auto">
         <div className="nav flex flex-row justify-between align-center">
           <div className="home">
             <Link to={'/'}>{t('Home')} <FontAwesomeIcon icon="fa-solid fa-house" /></Link>

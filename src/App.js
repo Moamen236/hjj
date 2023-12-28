@@ -9,6 +9,8 @@ import { useTranslation, initReactI18next, I18nextProvider } from "react-i18next
 import ar from './lang/ar.json';
 import en from './lang/en.json';
 import fr from './lang/fr.json';
+import DigitalInfrastructure from './components/DigitalInfrastructure';
+import AccessingHousing from './components/AccessingHousing';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -18,8 +20,8 @@ i18n
       ar: { global: ar },
       fr: { global: fr }
     },
-    lng: "en", // if you're using a language detector, do not define the lng option
-    fallbackLng: "en",
+    lng: "ar", // if you're using a language detector, do not define the lng option
+    fallbackLng: "ar",
 
     interpolation: {
       escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
@@ -40,6 +42,8 @@ function App() {
             <Routes location={location} key={location.pathname}>
               <Route index element={<Home t={t} />} />
               <Route path='/page' element={<Page t={t} />} />
+              <Route path='/digital-infrastructure' element={<DigitalInfrastructure t={t} />} />
+              <Route path='/accessing-housing' element={<AccessingHousing t={t} />} />
             </Routes>
           </AnimatePresence>
         </div>

@@ -1,10 +1,13 @@
 {
     "Home": "Accueil",
+    "Language": "Langue",
     "Digital Transformation": "Transformation numérique",
-    "Enrich the experience of the pilgrims": "Enrich the experience of the pilgrims",
-    "Develop planning, governance and control mechanisms": "Développer des mécanismes de planification, de gouvernance et de contrôle",
-    "Digital infrastructure development": "Développement des infrastructures numériques",
-    "Improve the quality of services provided to the pilgrims": "Améliorer la qualité des services fournis aux pèlerins",
-    "Develop the pilgrims' accommodation services": "Développer les services d’hébergement des pèlerins",
-    "Language": "Langue"
+    "Digital infrastructure development": "Développement de l'infrastructure numérique",
+    "One digital environment to serve pilgrims": "Un environnement numérique pour servir les pèlerins",
+    "Digital transformation to enrich the experience of the guests of God": "Transformation numérique pour enrichir l'expérience des invités de Dieu",
+    "Enriching the pilgrim's experience in accessing housing": "Enrichir l'expérience du pèlerin dans l'accès au logement",
+    "Digital transformation to develop planning, governance and control mechanisms": "Transformation numérique pour développer des mécanismes de planification, de gouvernance et de contrôle",
+    "Digital oversight to improve pilgrims' services": "Surveillance numérique pour améliorer les services aux pèlerins",
+    "Digital transformation to improve the quality of services provided to the pilgrims": "Transformation numérique pour améliorer la qualité des services fournis aux pèlerins",
+    "Digital transformation to develop the pilgrims' accommodation service": "Transformation numérique pour développer le service d'hébergement des pèlerins"
 }
