@@ -29,7 +29,7 @@ const DigitalInfrastructure = ({ t }) => {
     return (
         <>
             <div className="w-full h-full overflow-hidden">
-                <div className="content pt-32">
+                <div className="content pt-20">
                     <div className="w-[75vw] mx-auto">
                         <motion.h1 className='text-main text-[2vw] mb-2'
                             initial={{ opacity: 0, y: 50 }}
@@ -83,11 +83,11 @@ const DigitalInfrastructure = ({ t }) => {
                                 />
                                 <map name="imageMap">
                                     <area className="midani" shape="rect" coords="9,20,152,177" alt="Computer" href="#" onClick={() => setOpenMidaniModal(true)} />
-                                    <area className="taskin" shape="rect" coords="281,21,428,174" alt="Phone" href="#" />
-                                    <area className="microsoft" shape="rect" coords="561,19,722,173" alt="Cup of coffee" href="#" />
-                                    <area className="power" shape="rect" coords="849,20,980,173" alt="Cup of coffee" href="#" />
-                                    <area className="company" shape="rect" coords="1093,19,1219,175" alt="Cup of coffee" href="#" />
-                                    <area className="nusuk" shape="rect" coords="1328,22,1507,173" alt="Cup of coffee" href="#" />
+                                    <area className="taskin" shape="rect" coords="281,21,428,174" alt="Phone" href="#" onClick={() => setOpenMidaniModal(true)} />
+                                    <area className="microsoft" shape="rect" coords="561,19,722,173" alt="Cup of coffee" href="#" onClick={() => setOpenMidaniModal(true)} />
+                                    <area className="power" shape="rect" coords="849,20,980,173" alt="Cup of coffee" href="#" onClick={() => setOpenMidaniModal(true)} />
+                                    <area className="company" shape="rect" coords="1093,19,1219,175" alt="Cup of coffee" href="#" onClick={() => setOpenMidaniModal(true)} />
+                                    <area className="nusuk" shape="rect" coords="1328,22,1507,173" alt="Cup of coffee" href="#" onClick={() => setOpenMidaniModal(true)} />
                                 </map>
                                 <motion.div className="overlay absolute top-0 left-0 w-full h-full bg-blue-950"
                                     initial={{
@@ -164,7 +164,7 @@ const DigitalInfrastructure = ({ t }) => {
                                     <motion.img src={process.env.PUBLIC_URL + '/images/digital.gif'} alt="digital infrastructure" className='w-[22vw]'
                                         initial={{ y: 100 }}
                                         animate={{ y: 0 }}
-                                        transition={{ duration: 1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                     />
                                 </motion.div>
                             </div>
@@ -182,7 +182,16 @@ const DigitalInfrastructure = ({ t }) => {
 
             <ContentModal title="Digital Infrastructure" isOpen={openMidaniModal} setIsOpen={setOpenMidaniModal}>
                 <div className="space-y-6">
-                    
+                    <motion.div className="gif"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                    >
+                        <motion.img src={process.env.PUBLIC_URL + '/images/digital.gif'} alt="digital infrastructure" className='w-[22vw] mx-auto'
+                            initial={{ y: 100 }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        />
+                    </motion.div>
                 </div>
             </ContentModal>
         </>

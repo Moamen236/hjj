@@ -38,7 +38,7 @@ const Page = ({ t }) => {
     return (
         <>
             <div className="w-full h-full overflow-hidden">
-                <div className="content pt-32">
+                <div className="content pt-20">
                     <div className="w-[75vw] mx-auto">
                         <motion.h1 className='text-main text-[2vw] mb-2'
                             initial={{ opacity: 0, y: 50 }}

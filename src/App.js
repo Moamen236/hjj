@@ -11,6 +11,9 @@ import en from './lang/en.json';
 import fr from './lang/fr.json';
 import DigitalInfrastructure from './components/DigitalInfrastructure';
 import AccessingHousing from './components/AccessingHousing';
+import DigitalServices from './components/DigitalServices';
+import DevelopingSubsistence from './components/DevelopingSubsistence';
+import DevelopingAccommodation from './components/DevelopingAccommodation';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -20,11 +23,11 @@ i18n
       ar: { global: ar },
       fr: { global: fr }
     },
-    lng: "ar", // if you're using a language detector, do not define the lng option
+    lng: "ar",
     fallbackLng: "ar",
 
     interpolation: {
-      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+      escapeValue: false
     }
   });
 
@@ -44,6 +47,9 @@ function App() {
               <Route path='/page' element={<Page t={t} />} />
               <Route path='/digital-infrastructure' element={<DigitalInfrastructure t={t} />} />
               <Route path='/accessing-housing' element={<AccessingHousing t={t} />} />
+              <Route path='/digital-services' element={<DigitalServices t={t} />} />
+              <Route path='/developing-subsistence' element={<DevelopingSubsistence t={t} />} />
+              <Route path='/developing-accommodation' element={<DevelopingAccommodation t={t} />} />
             </Routes>
           </AnimatePresence>
         </div>

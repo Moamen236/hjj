@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
 
 
-const AccessingHousing = ({ t }) => {
+const DevelopingAccommodation = ({ t }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -23,7 +23,7 @@ const AccessingHousing = ({ t }) => {
                             }}
                         >
                             {/* {t('Digital Transformation')} */}
-                            إثراء تجربة الحاج في الوصول للسكن
+                            تطوير خدمات الإعاشة للحجاج
                         </motion.h1>
                         <motion.p className='text-white text-[1.2vw] mb-10'
                             initial={{ opacity: 0, y: 50 }}
@@ -33,7 +33,7 @@ const AccessingHousing = ({ t }) => {
                                 transition: { delay: 0.9, duration: 0.5 },
                             }}
                         >
-                            التحول الرقمي لإثراء تجربة ضيوف الرحمن
+                            التحول الرقمي لتطوير جودة الخدمات المقدمة لضيوف الرحمن
                         </motion.p>
                     </div>
                     <motion.div className="page-content h-full bg-blue-900 bg-opacity-50 w-full pt-20 pb-20"
@@ -72,7 +72,7 @@ const AccessingHousing = ({ t }) => {
                                     controls
                                     autoPlay
                                 >
-                                    <source src={process.env.PUBLIC_URL + '/images/videos/accessing-housing.mp4'} type="video/mp4" />
+                                    <source src={process.env.PUBLIC_URL + '/images/videos/developing-accommodation.mp4'} type="video/mp4" />
                                     <p className="vjs-no-js">
                                         To view this video please enable JavaScript, and consider upgrading to a
                                         web browser
@@ -99,7 +99,7 @@ const AccessingHousing = ({ t }) => {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1, duration: 0.5 }}
                                     >
-                                        أهداف تحسين تجربة الحاج في الوصول للسكن
+                                        اهداف تطوير خدمة تسكين الحجاج
                                     </motion.h2>
                                     <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
                                         initial={{ opacity: 0, y: 50 }}
@@ -108,8 +108,8 @@ const AccessingHousing = ({ t }) => {
                                     >
                                         <img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]' />
                                         <div className="text mx-[0.8vw]">
-                                            <strong className='text-main'>توفير معلومات لوجستية دقيقة للحجاج</strong>
-                                            <p className='mt-2'>توفير معلومات دقيقة وحديثة لجميع الإدارات، مما يسهل اتخاذ القرارات وتحسين أداء الشركة.</p>
+                                            <strong className='text-main'>مساعدة مراكز الخدمة في دراسة وتجهيز الخدمات للحجاج</strong>
+                                            <p className='mt-2'> تتيح البيانات الرقمية لمراكز الخدمة دراسة احتياجات الحجاج بشكل أكثر دقة، مما يساعدها على تجهيز الخدمات المناسبة.</p>
                                         </div>
                                     </motion.div>
                                     <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
@@ -119,19 +119,8 @@ const AccessingHousing = ({ t }) => {
                                     >
                                         <img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]' />
                                         <div className="text mx-[0.8vw]">
-                                            <strong className='text-main'>رفع دقة توجيه الحجاج لسكنهم الصحيح</strong>
-                                            <p className='mt-2'>ستؤدي المعلومات الدقيقة المتاحة للحجاج إلى رفع دقة توجيههم لسكنهم الصحيح، حيث سيتمكن الحجاج من معرفة موقع سكنهم بشكل دقيق، مما سيسهل عليهم الوصول إليه.</p>
-                                        </div>
-                                    </motion.div>
-                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
-                                        initial={{ opacity: 0, y: 50 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 1.4, duration: 0.5 }}
-                                    >
-                                        <img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]' />
-                                        <div className="text mx-[0.8vw]">
-                                            <strong className='text-main'>وصول الحجاج للسكن براحة وسهولة</strong>
-                                            <p className='mt-2'> توفير المعلومات الدقيقة والحد من الأخطاء في التوجيه سيسهل وصول الحجاج لسكنهم. حيث لن يحتاجوا إلى البحث أو الانتظار.</p>
+                                            <strong className='text-main'>تسكين الحجاج بدقة في المشاعر وحصولهم على الخدمات المقدمة</strong>
+                                            <p className='mt-2'> يضمن النظام الرقمي حصول الحجاج على السكن الصحيح في المشاعر، مما يسهل عليهم الحصول على الخدمات المقدمة.</p>
                                         </div>
                                     </motion.div>
                                 </div>
@@ -161,4 +150,4 @@ const AccessingHousing = ({ t }) => {
     )
 }
 
-export default AccessingHousing;
+export default DevelopingAccommodation;
