@@ -14,7 +14,6 @@ const Home = ({ t }) => {
   };
   return (
     <>
-      <div id="particles"></div>
       <div className='w-full h-full flex flex-row justify-center items-center pb-20 pt-10'>
         <div className="w-[60vw] mx-auto">
           <motion.div className="content"
