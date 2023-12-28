@@ -8,12 +8,13 @@ const Home = ({ t }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-}, []);
+  }, []);
   const handleClick = () => {
     setIsClicked(true);
   };
   return (
     <>
+      <div id="particles"></div>
       <div className='w-full h-full flex flex-row justify-center items-center pb-20 pt-10'>
         <div className="w-[60vw] mx-auto">
           <motion.div className="content"
@@ -35,7 +36,7 @@ const Home = ({ t }) => {
               transition={{ delay: 0.8, duration: 0.5 }}
             >
               {/* {t('One digital environment to serve pilgrims')} */}
-              تعرف على إستراتيجية التحول الرقمي  <br/>لخدمة ضيوف الرحمن
+              تعرف على إستراتيجية التحول الرقمي  <br />لخدمة ضيوف الرحمن
             </motion.h1>
             <div className="grid grid-rows-2 grid-flow-col gap-5">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 0.8, } }}

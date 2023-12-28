@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
@@ -11,6 +11,7 @@ const DevelopingSubsistence = ({ t }) => {
 
     return (
         <>
+            <div id="particles"></div>
             <div className="w-full h-full overflow-hidden">
                 <div className="content pt-20">
                     <div className="w-[75vw] mx-auto">

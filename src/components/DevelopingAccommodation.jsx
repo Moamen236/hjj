@@ -11,6 +11,7 @@ const DevelopingAccommodation = ({ t }) => {
 
     return (
         <>
+            <div id="particles"></div>
             <div className="w-full h-full overflow-hidden">
                 <div className="content pt-20">
                     <div className="w-[75vw] mx-auto">
