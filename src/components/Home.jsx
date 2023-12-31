@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import InactivityDetector from './Shared/InactivityDetector';
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 const Home = ({ t }) => {
@@ -13,7 +14,7 @@ const Home = ({ t }) => {
     setIsClicked(true);
   };
   return (
-    <>
+    <InactivityDetector>
       <video src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} autoPlay loop muted className="absolute top-0 left-0 -z-10 w-full">
         <source src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} type="video/mp4" />
       </video>
@@ -163,7 +164,7 @@ const Home = ({ t }) => {
         exit={{ scaleY: 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       />
-    </>
+    </InactivityDetector>
   )
 }
 

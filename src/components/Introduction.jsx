@@ -12,8 +12,12 @@ const Introduction = ({ i18n }) => {
 
   const [video, setVideo] = useState('/images/intro-1.mp4')
 
-  const cardElements = document.getElementsByClassName('card');
-  const logoElement = document.getElementById('logo');
+  const [cardElements, setCardElements] = useState([]);
+  const [logoElement, setLogoElement] = useState();
+  useEffect(() => {
+    setCardElements(document.getElementsByClassName('card'));
+    setLogoElement(document.getElementById('logo'));
+  })
   const handleClick = (lang, url) => {
     setVideo('/images/intro-2.mp4')
     handleChangeLanguage(lang)
