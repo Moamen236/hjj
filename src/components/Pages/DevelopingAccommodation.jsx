@@ -92,7 +92,7 @@ const DevelopingAccommodation = ({ t, i18n }) => {
                                     />
                                     <div className="text mx-[0.8vw]">
                                         <TextAnimation el="strong" className='text-main font-bold' text="مساعدة مراكز الخدمة في دراسة وتجهيز الخدمات للحجاج" elDelay={startDelay + 4} />
-                                        <TextAnimation el="p" className='mt-2' text=" تتيح البيانات الرقمية لمراكز الخدمة دراسة توزيع الحجاج بشكل أكثر دقة، مما يساعدها على تجهيز الخدمات المناسبة وتجنب التكدس." elDelay={startDelay + 5} />
+                                        <TextAnimation el="p" className='mt-2' text="تتيح البيانات الرقمية لمراكز الخدمة دراسة توزيع الحجاج بشكل أكثر دقة، مما يساعدها على تجهيز الخدمات المناسبة وتجنب التكدس." elDelay={startDelay + 5} />
                                     </div>
                                 </motion.div>
                                 <motion.div ref={ref} className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'

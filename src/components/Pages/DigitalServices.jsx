@@ -101,7 +101,7 @@ const DigitalServices = ({ t, i18n }) => {
                                     />
                                     <div className="text mx-[0.8vw]">
                                         <TextAnimation el="strong" className='text-main font-bold' text="توفير معلومات فورية" elDelay={startDelay + 4} />
-                                        <TextAnimation el="p" className='mt-2' text=" يسمح النظام الرقمي بتسجيل الملاحظات الميدانية وعرضها فوراً على  لوحة البيانات، مما يسهل على المسؤولين اتخاذ القرارات وتنفيذ التحسينات اللازمة. (Dashboard)" elDelay={startDelay + 5} />
+                                        <TextAnimation el="p" className='mt-2' text="يسمح النظام الرقمي بتسجيل الملاحظات الميدانية وعرضها فوراً على  لوحة البيانات، مما يسهل على المسؤولين اتخاذ القرارات وتنفيذ التحسينات اللازمة. (Dashboard)" elDelay={startDelay + 5} />
                                     </div>
                                 </motion.div>
                                 <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
@@ -135,7 +135,7 @@ const DigitalServices = ({ t, i18n }) => {
                                     />
                                     <div className="text mx-[0.8vw]">
                                         <TextAnimation el="strong" className='text-main font-bold' text="رفع جودة الخدمات المقدمة للحجاج" elDelay={startDelay + 8} />
-                                        <TextAnimation el="p" className='mt-2' text=" يؤدي تحسين كفاءة الرقابة الميدانية إلى رفع جودة الخدمات المقدمة للحجاج، حيث يتم اكتشاف الملاحظات ومعالجتها بشكل أسرع." elDelay={startDelay + 9} />
+                                        <TextAnimation el="p" className='mt-2' text="يؤدي تحسين كفاءة الرقابة الميدانية إلى رفع جودة الخدمات المقدمة للحجاج، حيث يتم اكتشاف الملاحظات ومعالجتها بشكل أسرع." elDelay={startDelay + 9} />
                                     </div>
                                 </motion.div>
                             </div>

@@ -112,7 +112,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                     />
                                     <div className="text mx-[0.8vw]">
                                         <TextAnimation el="strong" className='text-main font-bold' text="رفع دقة توجيه الحجاج لسكنهم الصحيح" elDelay={startDelay + 6} />
-                                        <TextAnimation el="p" className='mt-2' text=" ستؤدي المعلومات الدقيقة المتاحة للمشرفين إلى رفع دقة توجيه الحافلات للسكن الصحيح، حيث سيتمكن المرشد/ السائق من معرفة موقع السكن بشكل دقيق، ويسهل عليهم الوصول إليه." elDelay={startDelay + 7} />
+                                        <TextAnimation el="p" className='mt-2' text="ستؤدي المعلومات الدقيقة المتاحة للمشرفين إلى رفع دقة توجيه الحافلات للسكن الصحيح، حيث سيتمكن المرشد/ السائق من معرفة موقع السكن بشكل دقيق، ويسهل عليهم الوصول إليه." elDelay={startDelay + 7} />
                                     </div>
                                 </motion.div>
                                 <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
@@ -129,7 +129,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                     />
                                     <div className="text mx-[0.8vw]">
                                         <TextAnimation el="strong" className='text-main font-bold' text="وصول الحجاج للسكن براحة وسهولة" elDelay={startDelay + 9} />
-                                        <TextAnimation el="p" className='mt-2' text=" توفير المعلومات الدقيقة والحد من الأخطاء في التوجيه سيسهل وصول الحجاج لسكنهم بسرعة. حيث لن يحتاج المرشد/ السائق إلى البحث أو الانتظار." elDelay={startDelay + 10} />
+                                        <TextAnimation el="p" className='mt-2' text="توفير المعلومات الدقيقة والحد من الأخطاء في التوجيه سيسهل وصول الحجاج لسكنهم بسرعة. حيث لن يحتاج المرشد/ السائق إلى البحث أو الانتظار." elDelay={startDelay + 10} />
                                     </div>
                                 </motion.div>
                             </div>

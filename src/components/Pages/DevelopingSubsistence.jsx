@@ -62,7 +62,7 @@ const DevelopingSubsistence = ({ t, i18n }) => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1, transition: { delay: startDelay + 2, duration: duration, ease: ease } }}
                         >
-                            <video className="mx-auto w-full h-[20vw] rounded-2xl" loop controls autoPlay>
+                            <video className="mx-auto w-full h-[20vw] rounded-2xl" loop controls>
                                 <source src={process.env.PUBLIC_URL + '/images/videos/developing-subsistence.mp4'} type="video/mp4" />
                                 <p className="vjs-no-js">
                                     To view this video please enable JavaScript, and consider upgrading to a
