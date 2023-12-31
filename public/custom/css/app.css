@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+html,
+body {
+    overflow: hidden;
+    position: relative;
+}
+
+body {
+    position: relative;
+    background-color: #172554;
+}
+
+@font-face {
+    font-family: 'GESS-Bold';
+    src: url('../../fonts/GE_SS_Unique_Bold.otf');
+    font-style: normal;
+    font-weight: Bold;
+}
+
+@font-face {
+    font-family: 'GESS-Regular';
+    src: url('../../fonts/GE_SS_Unique_Light.otf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+    font-family: 'GESS-Bold', sans-serif;
+}
+
+p,
+label,
+a,
+button,
+input,
+textarea,
+select,
+option,
+li,
+ul,
+ol,
+table,
+thead,
+tbody,
+tr,
+td,
+th,
+div,
+span {
+    font-family: 'GESS-Regular', sans-serif;
+}
+
+.slide-in {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgb(23 37 84);
+    transform-origin: bottom;
+}
+
+.slide-out {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgb(23 37 84);
+    transform-origin: top;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.page-header {
+    background-size: contain;
+    height: 180px;
+}
+
+.introduction .card {
+    border: 25px solid transparent;
+    border-image: url("../../images/frame.png") 120 / 2 / 0 round;
+}

@@ -14,7 +14,10 @@ const Home = ({ t }) => {
   };
   return (
     <>
-      <div className='w-full h-full flex flex-row justify-center items-center pb-20 pt-10'>
+      <video src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} autoPlay loop muted className="absolute top-0 left-0 -z-10 w-full">
+        <source src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} type="video/mp4" />
+      </video>
+      <div className='w-full h-screen flex flex-row justify-center items-center pb-20 pt-10'>
         <div className="w-[60vw] mx-auto">
           <motion.div className="content"
             initial={{ opacity: 0 }}
@@ -22,7 +25,7 @@ const Home = ({ t }) => {
             exit={{ opacity: 0 }}
             transition={transition}
           >
-            <motion.div className="image w-1/5 mx-auto mb-8"
+            <motion.div className="image w-1/4 mx-auto mb-[1.5vw]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
@@ -39,42 +42,38 @@ const Home = ({ t }) => {
             </motion.h1>
             <div className="grid grid-rows-2 grid-flow-col gap-5">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 0.8, } }}
-                class="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
+                className="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
               >
                 <Link to={'/accessing-housing'}>
-                  <div class="py-2 px-3 relative">
-                    <div className="image w-[10vw] mx-auto">
-                      <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_4.png'} className='w-full' alt=""
+                  <div className="py-2 px-3 relative">
+                    <div className="image w-[15vw] mx-auto">
+                      <motion.img src={process.env.PUBLIC_URL + '/images/main/1.gif'} className='w-full' alt=""
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <p class="mt-6 text-[0.8vw] text-white">
-                      {/* {t('Learn about the digital transformation to serve the guests of God')} */}
+                    {/* <p className="mt-6 text-[0.8vw] text-white">
                       التحول الرقمي لإثراء تجربة ضيوف الرحمن
-                    </p>
-                    <h3 class="mt-3 text-[1vw] font-bold text-main">
-                      {/* {t('Enriching the pilgrim’s experience in accessing housing')} */}
+                    </p> */}
+                    <h3 className="mt-3 text-[1vw] font-bold text-main">
                       إثراء تجربة الحاج في الوصول للسكن
                     </h3>
                   </div>
                 </Link>
               </motion.div>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1.2, duration: 0.8, } }}
-                class="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
+                className="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
               >
                 <Link to={'/digital-services'}>
-                  <div class="py-2 px-3 relative">
-                    <div className="image w-[10vw] mx-auto">
-                      <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_2.png'} className='w-full' alt=""
+                  <div className="py-2 px-3 relative">
+                    <div className="image w-[15vw] mx-auto">
+                      <motion.img src={process.env.PUBLIC_URL + '/images/main/2.gif'} className='w-full' alt=""
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <p class="mt-6 text-[0.8vw] text-white">
-                      {/* {t("Digital transformation to develop planning, governance and control mechanisms")} */}
+                    {/* <p className="mt-6 text-[0.8vw] text-white">
                       التحول الرقمي لتطوير آليات التخطيط والرقابة
-                    </p>
-                    <h3 class="mt-3 text-[1vw] font-bold text-main">
-                      {/* {t("Enriching the pilgrim's experience in accessing housing")} */}
+                    </p> */}
+                    <h3 className="mt-3 text-[1vw] font-bold text-main">
                       رقابة رقمية لتحسين خدمات الحجاج
                     </h3>
                   </div>
@@ -82,27 +81,25 @@ const Home = ({ t }) => {
               </motion.div>
               <div className="grid grid-row-subgrid gap-4 row-span-3 justify-self-center">
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.6, duration: 0.8, } }}
-                  class="row-start-2 h-fit transition-all p-4 relative z-40 w-[20vw] text-center"
+                  className="row-start-2 h-fit transition-all p-4 relative z-40 w-[22vw] text-center"
                 >
                   <Link to={'/digital-infrastructure'}
                     onClick={handleClick}
                   >
-                    <div class="py-2 px-3 relative">
-                      <div className="image w-[18vw] mx-auto">
-                        <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_1.png'} className='w-full' alt=""
+                    <div className="py-2 px-3 relative">
+                      <div className="image w-[20vw] mx-auto">
+                        <motion.img src={process.env.PUBLIC_URL + '/images/main/3.gif'} className='w-full' alt=""
                           whileTap={{ scale: 1.1 }}
                         />
                       </div>
-                      <motion.p class="mt-6 text-[0.8vw] mb-1 text-white"
-                        animate={{ opacity: isClicked ? 0 : 1 }}
+                      {/* <motion.p className="mt-6 text-[0.8vw] mb-1 text-white"
+                        animate={{ opacity: 1 }}
                       >
-                        {/* {t("Digital infrastructure development")} */}
                         تطوير البنية التحتية الرقمية
-                      </motion.p>
-                      <motion.h2 class="mt-3 text-[1vw] font-bold text-main"
-                        animate={{ opacity: isClicked ? 0 : 1 }}
+                      </motion.p> */}
+                      <motion.h2 className="mt-3 text-[1vw] font-bold text-main"
+                        animate={{ opacity: 1 }}
                       >
-                        {/* {t("One digital environment to serve pilgrims")} */}
                         بيئة رقمية واحدة لخدمة الحجاج
                       </motion.h2>
                     </div>
@@ -110,42 +107,38 @@ const Home = ({ t }) => {
                 </motion.div>
               </div>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1.4, duration: 0.8, } }}
-                class="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
+                className="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
               >
                 <Link to={'/developing-subsistence'}>
-                  <div class="py-2 px-3 relative">
-                    <div className="image w-[10vw] mx-auto">
-                      <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_3.png'} className='w-full' alt=""
+                  <div className="py-2 px-3 relative">
+                    <div className="image w-[15vw] mx-auto">
+                      <motion.img src={process.env.PUBLIC_URL + '/images/main/4.gif'} className='w-full' alt=""
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <p class="mt-6 text-[0.8vw] text-white">
-                      {/* {t('Digital transformation to improve the quality of services provided to the pilgrims')} */}
+                    {/* <p className="mt-6 text-[0.8vw] text-white">
                       التحول الرقمي لتطوير جودة الخدمات
-                    </p>
-                    <h3 class="mt-3 text-[1vw] font-bold text-main">
-                      {/* {t('One digital environment to serve pilgrims')} */}
+                    </p> */}
+                    <h3 className="mt-3 text-[1vw] font-bold text-main">
                       تطوير خدمات الإعاشة الحجاج
                     </h3>
                   </div>
                 </Link>
               </motion.div>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1.6, duration: 0.8, } }}
-                class="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
+                className="transition-all p-4 relative z-40 w-[20vw] text-center justify-self-center"
               >
                 <Link to={'/developing-accommodation'}>
-                  <div class="py-2 px-3 relative">
-                    <div className="image w-[10vw] mx-auto">
-                      <motion.img src={process.env.PUBLIC_URL + '/images/main/asset_5.png'} className='w-full' alt=""
+                  <div className="py-2 px-3 relative">
+                    <div className="image w-[15vw] mx-auto">
+                      <motion.img src={process.env.PUBLIC_URL + '/images/main/5.gif'} className='w-full' alt=""
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <p class="mt-6 text-[0.8vw] text-white">
-                      {/* {t("Digital transformation to develop the pilgrims' accommodation service")} */}
+                    {/* <p className="mt-6 text-[0.8vw] text-white">
                       التحول الرقمي لتطوير خدمة تسكين الحجاج
-                    </p>
-                    <h3 class="mt-3 text-[1vw] font-bold text-main">
-                      {/* {t("One digital environment to serve pilgrims")} */}
+                    </p> */}
+                    <h3 className="mt-3 text-[1vw] font-bold text-main">
                       تطوير خدمة تسكين الحجاج
                     </h3>
                   </div>
