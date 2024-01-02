@@ -1,17 +1,20 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { TextAnimation } from '../Shared/TextAnimation';
 import Navbar from '../Shared/Navbar';
 import InactivityDetector from '../Shared/InactivityDetector';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
 
 const startDelay = 9;
-const duration = 0.8;
+const duration = 0.3;
 const ease = [0.22, 1, 0.36, 1]
 
 
 const DigitalServices = ({ t, i18n }) => {
     const lang = i18n.language;
     const [video, setVideo] = useState('/images/page-1.mp4');
+    const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {
         window.scrollTo(0, 0);
         setTimeout(() => {
@@ -19,12 +22,18 @@ const DigitalServices = ({ t, i18n }) => {
         }, 9500);
     }, []);
 
-    const ref = useRef(null);
-    const inView = useInView(ref, { amount: 0.5, once: true });
+    const handleSlideChange = (swiper) => {
+        setActiveIndex(swiper.realIndex);
+    };
 
     const listAnimate = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
+        hidden: { opacity: 0, y: 100 },
+        visible: { opacity: 1, y: 0 }
+    }
+
+    const imageYAnimate = {
+        hidden: { opacity: 0, y: 100 },
+        visible: { opacity: 1, y: 0 }
     }
 
     return (
@@ -49,126 +58,231 @@ const DigitalServices = ({ t, i18n }) => {
 
                 <div className={`w-full h-screen flex flex-row justify-between items-start mx-40 pt-20`}>
                     <div className="content w-[40vw]">
-                        <motion.div className="page-header mb-20"
+                        <div className="">
+                            <motion.div className="page-header mb-20"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
+                                style={{
+                                    background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
+                                    backgroundSize: 'contain'
+                                }}
+                            >
+                                <div className={lang === 'ar' ? 'pr-52' : 'pl-52'}>
+                                    <TextAnimation el="h1" className='text-main text-[1.8vw] mb-2 font-bold pt-10' text="رقابة رقمية لتحسين خدمات الحجاج" elDelay={startDelay + 0.1} />
+                                </div>
+                                {/* <TextAnimation el="p" className='text-white text-[1.2vw]' text="التحول الرقمي لتطوير جودة الخدمات المقدمة لضيوف الرحمن" elDelay={startDelay + 1} /> */}
+                            </motion.div>
+
+                            <motion.div className="relative overflow-hidden"
+                                style={{
+                                    border: '40px solid transparent',
+                                    borderImage: `url(${process.env.PUBLIC_URL + '/images/frame.png'}) 100 / 2 / 1 round`
+                                }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1, transition: { delay: startDelay + 2, duration: duration, ease: ease } }}
+                            >
+                                <video className="mx-auto w-full h-[20vw] rounded-2xl" loop controls>
+                                    <source src={process.env.PUBLIC_URL + '/images/videos/digital-services.mp4'} type="video/mp4" />
+                                    <p className="vjs-no-js">
+                                        To view this video please enable JavaScript, and consider upgrading to a
+                                        web browser
+                                    </p>
+                                </video>
+                                <motion.div className="overlay absolute top-0 left-0 w-full h-full bg-blue-950"
+                                    initial={{ width: "100%" }}
+                                    animate={{ width: 0, transition: { delay: startDelay + 3, duration: duration, ease: ease }, }}
+                                ></motion.div>
+                            </motion.div>
+                        </div>
+                        <motion.div className="text-content mt-40"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
-                            style={{
-                                background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
-                                backgroundSize: 'contain'
-                            }}
+                            transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
                         >
-                            <div className={lang === 'ar' ? 'pr-52' : 'pl-52'}>
-                                <TextAnimation el="h1" className='text-main text-[1.8vw] mb-2 font-bold pt-10' text="رقابة رقمية لتحسين خدمات الحجاج" elDelay={startDelay + 0.1} />
-                            </div>
-                            {/* <TextAnimation el="p" className='text-white text-[1.2vw]' text="التحول الرقمي لتطوير جودة الخدمات المقدمة لضيوف الرحمن" elDelay={startDelay + 1} /> */}
-                        </motion.div>
-
-                        <motion.div className="relative overflow-hidden"
-                            style={{
-                                border: '40px solid transparent',
-                                borderImage: `url(${process.env.PUBLIC_URL + '/images/frame.png'}) 100 / 2 / 1 round`
-                            }}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1, transition: { delay: startDelay + 2, duration: duration, ease: ease } }}
-                        >
-                            <video className="mx-auto w-full h-[20vw] rounded-2xl" loop controls>
-                                <source src={process.env.PUBLIC_URL + '/images/videos/digital-services.mp4'} type="video/mp4" />
-                                <p className="vjs-no-js">
-                                    To view this video please enable JavaScript, and consider upgrading to a
-                                    web browser
-                                </p>
-                            </video>
-                            <motion.div className="overlay absolute top-0 left-0 w-full h-full bg-blue-950"
-                                initial={{ width: "100%" }}
-                                animate={{ width: 0, transition: { delay: startDelay + 3, duration: duration, ease: ease }, }}
-                            ></motion.div>
-                        </motion.div>
-                        <div className="text-content grid items-start justify-between grid-flow-col mt-[2.1vw]">
-                            <div className="list">
-                                {/* <TextAnimation el="h2" className='text-white text-[1.2vw] mb-[1.3vw]' text="أهداف تحول الرقابة الميدانية على خدمات الحجاج من النظام الورقي الى الرقمي" elDelay={startDelay + 3} /> */}
-                                <motion.div ref={ref} className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
-                                    variants={listAnimate}
-                                    initial="hidden"
-                                    animate={inView ? "visible" : "hidden"}
-                                    transition={{ duration: duration }}
-                                >
-                                    <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
-                                        variants={listAnimate}
-                                        initial="hidden"
-                                        animate={inView ? "visible" : "hidden"}
-                                        transition={{ delay: startDelay + 4, duration: duration }}
-                                    />
-                                    <div className="text mx-[0.8vw]">
-                                        <TextAnimation el="strong" className='text-main font-bold' text="توفير معلومات فورية" elDelay={startDelay + 4} />
-                                        <TextAnimation el="p" className='mt-2' text="يسمح النظام الرقمي بتسجيل الملاحظات الميدانية وعرضها فوراً على  لوحة البيانات، مما يسهل على المسؤولين اتخاذ القرارات وتنفيذ التحسينات اللازمة. (Dashboard)" elDelay={startDelay + 5} />
-                                    </div>
-                                </motion.div>
-                                <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
-                                    variants={listAnimate}
-                                    initial="hidden"
-                                    animate={inView ? "visible" : "hidden"}
-                                    transition={{ duration: duration }}
-                                >
-                                    <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
-                                        variants={listAnimate}
-                                        initial="hidden"
-                                        animate={inView ? "visible" : "hidden"}
-                                        transition={{ delay: startDelay + 6, duration: duration }}
-                                    />
-                                    <div className="text mx-[0.8vw]">
-                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع كفاءة موظفي الرقابة الميدانية" elDelay={startDelay + 6} />
-                                        <TextAnimation el="p" className='mt-2' text="يوفر النظام الرقمي أدوات وتقارير تساعد موظفي الرقابة الميدانية على أداء مهامهم بكفاءة أكبر." elDelay={startDelay + 7} />
-                                    </div>
-                                </motion.div>
-                                <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
-                                    variants={listAnimate}
-                                    initial="hidden"
-                                    animate={inView ? "visible" : "hidden"}
-                                    transition={{ duration: duration }}
-                                >
-                                    <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
-                                        variants={listAnimate}
-                                        initial="hidden"
-                                        animate={inView ? "visible" : "hidden"}
-                                        transition={{ delay: startDelay + 8, duration: duration }}
-                                    />
-                                    <div className="text mx-[0.8vw]">
-                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع جودة الخدمات المقدمة للحجاج" elDelay={startDelay + 8} />
-                                        <TextAnimation el="p" className='mt-2' text="يؤدي تحسين كفاءة الرقابة الميدانية إلى رفع جودة الخدمات المقدمة للحجاج، حيث يتم اكتشاف الملاحظات ومعالجتها بشكل أسرع." elDelay={startDelay + 9} />
-                                    </div>
-                                </motion.div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="content w-[40vw] flex flex-row justify-end">
-                        <div className="content">
-                            <motion.div className="tablet w-[35vw]"
-                                variants={listAnimate}
-                                initial="hidden"
-                                animate={inView ? "visible" : "hidden"}
-                                transition={{ delay: startDelay + 1, duration: duration }}
+                            <Swiper
+                                centeredSlides={true}
+                                autoplay={{
+                                    delay: 7000,
+                                    disableOnInteraction: false,
+                                }}
+                                effect={"fade"}
+                                fadeEffect={{
+                                    crossFade: true
+                                }}
+                                speed={1000}
+                                onSlideChange={handleSlideChange}
+                                modules={[EffectFade, Autoplay]}
                             >
-                                <img src={process.env.PUBLIC_URL + '/images/sup_pages/tablet.gif'} className="w-full" alt="" />
-                            </motion.div>
-                            <div className="flex flex-row justify-between items-center mt-10">
-                                <motion.div className="mobile w-[23vw]"
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: startDelay + 1, duration: 0.5 }}
-                                >
-                                    <img src={process.env.PUBLIC_URL + '/images/sup_pages/estkbal-03.jpg'} className="w-full" alt="" />
-                                </motion.div>
-                                <motion.div className="mobile w-[10vw]"
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: startDelay + 1, duration: 0.5 }}
-                                >
-                                    <img src={process.env.PUBLIC_URL + '/images/sup_pages/mobile.gif'} className="w-full" alt="" />
-                                </motion.div>
-                            </div>
-                        </div>
+                                <SwiperSlide>
+                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                        variants={listAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 0 ? "visible" : "hidden"}
+                                        transition={{ duration: duration }}
+                                    >
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                            variants={listAnimate}
+                                            initial="hidden"
+                                            animate={activeIndex === 0 ? "visible" : "hidden"}
+                                            transition={{ duration: duration }}
+                                        />
+                                        <div className="text mx-[0.8vw]">
+                                            {
+                                                activeIndex === 0 ? (
+                                                    <>
+                                                        <TextAnimation el="strong" className='text-main font-bold' text="توفير معلومات فورية" title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text="يسمح النظام الرقمي بتسجيل الملاحظات الميدانية وعرضها فوراً على  لوحة البيانات، مما يسهل على المسؤولين اتخاذ القرارات وتنفيذ التحسينات اللازمة. (Dashboard)" />
+                                                    </>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+
+                                <SwiperSlide>
+                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                        variants={listAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 1 ? "visible" : "hidden"}
+                                        transition={{ duration: duration }}
+                                    >
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                            variants={listAnimate}
+                                            initial="hidden"
+                                            animate={activeIndex === 1 ? "visible" : "hidden"}
+                                            transition={{ duration: duration }}
+                                        />
+                                        <div className="text mx-[0.8vw]">
+                                            {
+                                                activeIndex === 1 ? (
+                                                    <>
+                                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع كفاءة موظفي الرقابة الميدانية" title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text="يوفر النظام الرقمي أدوات وتقارير تساعد موظفي الرقابة الميدانية على أداء مهامهم بكفاءة أكبر." />
+                                                    </>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+
+                                <SwiperSlide>
+                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                        variants={listAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 2 ? "visible" : "hidden"}
+                                        transition={{ duration: duration }}
+                                    >
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                            variants={listAnimate}
+                                            initial="hidden"
+                                            animate={activeIndex === 2 ? "visible" : "hidden"}
+                                            transition={{ duration: duration }}
+                                        />
+                                        <div className="text mx-[0.8vw]">
+                                            {
+                                                activeIndex === 2 ? (
+                                                    <>
+                                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع جودة الخدمات المقدمة للحجاج" title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text="يؤدي تحسين كفاءة الرقابة الميدانية إلى رفع جودة الخدمات المقدمة للحجاج، حيث يتم اكتشاف الملاحظات ومعالجتها بشكل أسرع." />
+                                                    </>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+                            </Swiper>
+                        </motion.div>
                     </div>
+                    <motion.div className="content mt-7 w-[40vw] flex flex-row justify-end"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
+                    >
+                        <Swiper
+                            centeredSlides={true}
+                            autoplay={{
+                                delay: 7000,
+                                disableOnInteraction: false,
+                            }}
+                            effect={"fade"}
+                            fadeEffect={{
+                                crossFade: true
+                            }}
+                            speed={1000}
+                            onSlideChange={handleSlideChange}
+                            modules={[EffectFade, Autoplay]}
+                        >
+                            {/* Point 1 */}
+                            <SwiperSlide>
+                                <div className="content flex flex-col items-center">
+                                    <motion.div className="w-[30vw]"
+                                        variants={imageYAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 0 ? "visible" : "hidden"}
+                                        transition={{ delay: 0.4, duration: duration }}
+                                    >
+                                        <img src={process.env.PUBLIC_URL + '/images/services/system-point-1.gif'} className="w-full" alt="" />
+                                    </motion.div>
+                                    <motion.div className="w-[30vw]"
+                                        variants={imageYAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 0 ? "visible" : "hidden"}
+                                        transition={{ delay: 0.8, duration: duration }}
+                                    >
+                                        <img src={process.env.PUBLIC_URL + '/images/services/tablet-point-1.gif'} className="w-full" alt="" />
+                                    </motion.div>
+                                </div>
+                            </SwiperSlide>
+                            {/* Point 1 */}
+
+                            {/* Point 2 */}
+                            <SwiperSlide>
+                                <div className="content flex flex-col items-center">
+                                    <motion.div className="w-[30vw]"
+                                        variants={imageYAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 1 ? "visible" : "hidden"}
+                                        transition={{ delay: 0.4, duration: duration }}
+                                    >
+                                        <img src={process.env.PUBLIC_URL + '/images/services/system-point-2.gif'} className="w-full" alt="" />
+                                    </motion.div>
+                                    <motion.div className="w-[12vw]"
+                                        variants={imageYAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 1 ? "visible" : "hidden"}
+                                        transition={{ delay: 0.8, duration: duration }}
+                                    >
+                                        <img src={process.env.PUBLIC_URL + '/images/services/mobile-point-2.gif'} className="w-full" alt="" />
+                                    </motion.div>
+                                </div>
+                            </SwiperSlide>
+                            {/* Point 2 */}
+
+                            {/* Point 3 */}
+                            <SwiperSlide>
+                                <div className="content flex flex-col items-center">
+                                    <motion.div className="w-[30vw]"
+                                        variants={imageYAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 2 ? "visible" : "hidden"}
+                                        transition={{ delay: 0.4, duration: duration }}
+                                    >
+                                        <img src={process.env.PUBLIC_URL + '/images/services/system-point-3.gif'} className="w-full" alt="" />
+                                    </motion.div>
+                                    <motion.div className="w-[30vw]"
+                                        variants={imageYAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 2 ? "visible" : "hidden"}
+                                        transition={{ delay: 0.8, duration: duration }}
+                                    >
+                                        <img src={process.env.PUBLIC_URL + '/images/services/happy-point-3.jpg'} className="w-full" alt="" />
+                                    </motion.div>
+                                </div>
+                            </SwiperSlide>
+                            {/* Point 3 */}
+                        </Swiper>
+                    </motion.div>
                 </div>
             </div>
         </InactivityDetector>

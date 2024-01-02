@@ -10,7 +10,7 @@ const Introduction = ({ i18n }) => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
   }
 
-  const [video, setVideo] = useState('/images/intro-1.mp4')
+  const [video, setVideo] = useState('/images/intro-overlay.mp4')
 
   const [cardElements, setCardElements] = useState([]);
   const [logoElement, setLogoElement] = useState();
@@ -38,8 +38,8 @@ const Introduction = ({ i18n }) => {
 
   return (
     <>
-      <video id="bg-video" src={process.env.PUBLIC_URL + "/images/intro-1.mp4"} autoPlay loop muted className="absolute top-0 left-0 z-10 w-full">
-        <source src={process.env.PUBLIC_URL + "/images/intro-1.mp4"} type="video/mp4" />
+      <video id="bg-video" src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} autoPlay loop muted className="absolute top-0 left-0 z-10 w-full">
+        <source src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} type="video/mp4" />
       </video>
       <motion.video src={process.env.PUBLIC_URL + video} autoPlay loop muted className="absolute top-0 left-0 z-20 w-full"
         initial={{ opacity: 0 }}

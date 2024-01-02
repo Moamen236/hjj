@@ -5,6 +5,8 @@ import App from './App';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import "../node_modules/flowbite/dist/flowbite.min.js";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+import "../node_modules/swiper/swiper-bundle.min.css";
+import "../node_modules/swiper/swiper-bundle.min.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

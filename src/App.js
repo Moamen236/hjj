@@ -13,6 +13,7 @@ import DigitalServices from './components/Pages/DigitalServices';
 import DevelopingSubsistence from './components/Pages/DevelopingSubsistence';
 import DevelopingAccommodation from './components/Pages/DevelopingAccommodation';
 import Introduction from './components/Introduction';
+import SwiperContent from './components/Test/SwiperContent';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next

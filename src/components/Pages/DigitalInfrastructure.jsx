@@ -1,16 +1,19 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { TextAnimation } from '../Shared/TextAnimation';
 import Navbar from '../Shared/Navbar';
 import InactivityDetector from '../Shared/InactivityDetector';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
 
 const startDelay = 9;
-const duration = 0.8;
+const duration = 0.3;
 const ease = [0.22, 1, 0.36, 1];
 
 const DigitalInfrastructure = ({ t, i18n }) => {
     const lang = i18n.language;
     const [video, setVideo] = useState('/images/page-1.mp4');
+    const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {
         window.scrollTo(0, 0);
         setTimeout(() => {
@@ -18,12 +21,18 @@ const DigitalInfrastructure = ({ t, i18n }) => {
         }, 9000);
     }, []);
 
-    const ref = useRef(null);
-    const inView = useInView(ref, { amount: 0.5, once: true });
+    const handleSlideChange = (swiper) => {
+        setActiveIndex(swiper.realIndex);
+    };
 
     const listAnimate = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
+        hidden: { opacity: 0, y: 100 },
+        visible: { opacity: 1, y: 0 }
+    }
+
+    const imageYAnimate = {
+        hidden: { opacity: 0, y: 100 },
+        visible: { opacity: 1, y: 0 }
     }
 
 
@@ -52,76 +61,119 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                 </video>
                 <div className={`w-full h-screen flex flex-row justify-between items-start mx-40 pt-20`}>
                     <div className="content w-[40vw]">
-                        <motion.div className="page-header mb-20"
+                        <div className="">
+                            <motion.div className="page-header mb-20"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
+                                style={{
+                                    background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
+                                    backgroundSize: 'contain'
+                                }}
+                            >
+                                <div className={lang === 'ar' ? 'pr-52' : 'pl-52'}>
+                                    <TextAnimation el="h1" className='text-main text-[1.8vw] mb-2 font-bold pt-10' text="بيئة رقمية واحدة لخدمة الحجاج" elDelay={startDelay + 0.2} />
+                                </div>
+                            </motion.div>
+                        </div>
+                        <motion.div className="text-content mt-[2.1vw]"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
-                            style={{
-                                background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
-                                backgroundSize: 'contain'
-                            }}
+                            transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
                         >
-                            <div className={lang === 'ar' ? 'pr-52' : 'pl-52'}>
-                                <TextAnimation el="h1" className='text-main text-[1.8vw] mb-2 font-bold pt-10' text="بيئة رقمية واحدة لخدمة الحجاج" elDelay={startDelay + 0.2} />
-                            </div>
-                            {/* <TextAnimation el="p" className='text-white text-[1.2vw]' text="التحول الرقمي لتطوير جودة الخدمات المقدمة لضيوف الرحمن" elDelay={startDelay + 1} /> */}
+                            <Swiper
+                                centeredSlides={true}
+                                autoplay={{
+                                    delay: 7000,
+                                    disableOnInteraction: false,
+                                }}
+                                effect={"fade"}
+                                fadeEffect={{
+                                    crossFade: true
+                                }}
+                                speed={1000}
+                                onSlideChange={handleSlideChange}
+                                modules={[EffectFade, Autoplay]}
+                            >
+                                <SwiperSlide>
+                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                        variants={listAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 0 ? "visible" : "hidden"}
+                                        transition={{ duration: duration }}
+                                    >
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                            variants={listAnimate}
+                                            initial="hidden"
+                                            animate={activeIndex === 0 ? "visible" : "hidden"}
+                                            transition={{ duration: duration }}
+                                        />
+                                        <div className="text mx-[0.8vw]">
+                                            {
+                                                activeIndex === 0 ? (
+                                                    <>
+                                                        <TextAnimation el="strong" className='text-main font-bold' text="تكامل المعلومات" title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text="ترابط الأنظمة في بيئة رقمية واحدة تؤدي لتوفير معلومات دقيقة ومحدثة لجميع الإدارات." />
+                                                    </>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+
+                                <SwiperSlide>
+                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                        variants={listAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 1 ? "visible" : "hidden"}
+                                        transition={{ duration: duration }}
+                                    >
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                            variants={listAnimate}
+                                            initial="hidden"
+                                            animate={activeIndex === 1 ? "visible" : "hidden"}
+                                            transition={{ duration: duration }}
+                                        />
+                                        <div className="text mx-[0.8vw]">
+                                            {
+                                                activeIndex === 1 ? (
+                                                    <>
+                                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع كفاءة العمل" title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text="توفير هذه المعلومات ستسهل اتخاذ القرارات وتحسن أداء الشركة." />
+                                                    </>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+
+                                <SwiperSlide>
+                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                        variants={listAnimate}
+                                        initial="hidden"
+                                        animate={activeIndex === 2 ? "visible" : "hidden"}
+                                        transition={{ duration: duration }}
+                                    >
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                            variants={listAnimate}
+                                            initial="hidden"
+                                            animate={activeIndex === 2 ? "visible" : "hidden"}
+                                            transition={{ duration: duration }}
+                                        />
+                                        <div className="text mx-[0.8vw]">
+                                            {
+                                                activeIndex === 2 ? (
+                                                    <>
+                                                        <TextAnimation el="strong" className='text-main font-bold' text="تحسين الجودة المقدمة للحجاج" title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text="توفير معلومات دقيقة لفريق العمل، مما يسهل حصول الحجاج على الخدمات التي يحتاجونها." />
+                                                    </>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </motion.div>
+                                </SwiperSlide>
+                            </Swiper>
                         </motion.div>
-                        <div className="text-content grid items-start justify-between grid-flow-col mt-[2.1vw]">
-                            <div className="list">
-                                {/* <TextAnimation el="h2" className='text-white text-[1.2vw] mb-[1.3vw]' text="أهداف تحول الرقابة الميدانية على خدمات الحجاج من النظام الورقي الى الرقمي" elDelay={startDelay + 3} /> */}
-                                <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
-                                    variants={listAnimate}
-                                    initial="hidden"
-                                    animate={inView ? "visible" : "hidden"}
-                                    transition={{ duration: duration }}
-                                >
-                                    <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
-                                        variants={listAnimate}
-                                        initial="hidden"
-                                        animate={inView ? "visible" : "hidden"}
-                                        transition={{ delay: startDelay + 1, duration: duration }}
-                                    />
-                                    <div className="text mx-[0.8vw]">
-                                        <TextAnimation el="strong" className='text-main font-bold' text="تكامل المعلومات" elDelay={startDelay + 1} />
-                                        <TextAnimation el="p" className='mt-2' text="ترابط الأنظمة في بيئة رقمية واحدة تؤدي لتوفير معلومات دقيقة ومحدثة لجميع الإدارات." elDelay={startDelay + 2} />
-                                    </div>
-                                </motion.div>
-                                <motion.div ref={ref} className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
-                                    variants={listAnimate}
-                                    initial="hidden"
-                                    animate={inView ? "visible" : "hidden"}
-                                    transition={{ duration: duration }}
-                                >
-                                    <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
-                                        variants={listAnimate}
-                                        initial="hidden"
-                                        animate={inView ? "visible" : "hidden"}
-                                        transition={{ delay: startDelay + 3, duration: duration }}
-                                    />
-                                    <div className="text mx-[0.8vw]">
-                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع كفاءة العمل" elDelay={startDelay + 3} />
-                                        <TextAnimation el="p" className='mt-2' text="توفير هذه المعلومات ستسهل اتخاذ القرارات وتحسن أداء الشركة." elDelay={startDelay + 4} />
-                                    </div>
-                                </motion.div>
-                                <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
-                                    variants={listAnimate}
-                                    initial="hidden"
-                                    animate={inView ? "visible" : "hidden"}
-                                    transition={{ duration: duration }}
-                                >
-                                    <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
-                                        variants={listAnimate}
-                                        initial="hidden"
-                                        animate={inView ? "visible" : "hidden"}
-                                        transition={{ delay: startDelay + 5, duration: duration }}
-                                    />
-                                    <div className="text mx-[0.8vw]">
-                                        <TextAnimation el="strong" className='text-main font-bold' text="تحسين الجودة المقدمة للحجاج" elDelay={startDelay + 5} />
-                                        <TextAnimation el="p" className='mt-2' text="توفير معلومات دقيقة لفريق العمل، مما يسهل حصول الحجاج على الخدمات التي يحتاجونها." elDelay={startDelay + 6} />
-                                    </div>
-                                </motion.div>
-                            </div>
-                        </div>
 
                     </div>
                     <div className="content w-[40vw]">
