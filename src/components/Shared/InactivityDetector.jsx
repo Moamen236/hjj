@@ -14,7 +14,7 @@ const InactivityDetector = ({ children }) => {
         setIsInactive(true);
         window.location.href = '/';
         // history.push('/'); // Replace '/home' with the actual path to your home page
-      }, 65000); // 1.5 minute in milliseconds
+      }, 99965000); // 1.5 minute in milliseconds
     };
 
     const handleActivity = () => {

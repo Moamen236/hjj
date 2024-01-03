@@ -5,16 +5,16 @@ import { motion } from 'framer-motion'
 const Navbar = ({ t, i18n }) => {
   const lang = i18n.language;
   return (
-    <nav className={`fixed top-0 ${lang === 'ar' ? 'left-0' : 'right-0'} z-50 bg-main p-5 flex justify-center items-center`}>
+    <nav>
       <div className="nav flex flex-col justify-center items-center">
         <motion.div className="home"
           whileTap={{ scale: 0.9 }}
         >
-          <Link to={'/home'}
-            className="text-white hover:text-main"
-          >
-            {/* <i className='fa-solid fa-house text-[1.2vw]'></i> */}
-            <img src={process.env.PUBLIC_URL + '/images/home.png'} alt="" className='w-[2vw]'/>
+          <Link to={'/home'} className={`fixed top-0 ${lang === 'ar' ? 'left-0' : 'right-0'} z-50 bg-main p-[0.6vw] flex justify-center items-center`}>
+            <img src={process.env.PUBLIC_URL + '/images/home.png'} alt="" className='w-[2vw]' />
+          </Link>
+          <Link to={'/'} className={`fixed bottom-0 ${lang === 'ar' ? 'left-0' : 'right-0'} z-50 bg-main p-[0.6vw] flex justify-center items-center`}>
+            <i className='fa-solid fa-globe text-[2vw] w-[2vw]'></i>
           </Link>
         </motion.div>
         {/* <div className="language">

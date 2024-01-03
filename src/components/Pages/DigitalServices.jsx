@@ -39,7 +39,7 @@ const DigitalServices = ({ t, i18n }) => {
     return (
         <InactivityDetector>
             <Navbar t={t} i18n={i18n} />
-            <div className='w-full h-screen flex flex-row justify-center items-center'>
+            <div className='w-full h-screen overflow-x-hidden'>
                 <video src={process.env.PUBLIC_URL + "/images/page-2.mp4"} autoPlay loop muted className="absolute top-0 left-0 -z-20 w-full"
                     style={{
                         transform: lang === 'ar' ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -56,46 +56,44 @@ const DigitalServices = ({ t, i18n }) => {
                     <source src={process.env.PUBLIC_URL + video} type="video/mp4" />
                 </video>
 
-                <div className={`w-full h-screen flex flex-row justify-between items-start mx-40 pt-20`}>
-                    <div className="content w-[40vw]">
-                        <div className="">
-                            <motion.div className="page-header mb-20"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
-                                style={{
-                                    background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
-                                    backgroundSize: 'contain'
-                                }}
-                            >
-                                <div className={lang === 'ar' ? 'pr-52' : 'pl-52'}>
-                                    <TextAnimation el="h1" className='text-main text-[1.8vw] mb-2 font-bold pt-10' text="رقابة رقمية لتحسين خدمات الحجاج" elDelay={startDelay + 0.1} />
-                                </div>
-                                {/* <TextAnimation el="p" className='text-white text-[1.2vw]' text="التحول الرقمي لتطوير جودة الخدمات المقدمة لضيوف الرحمن" elDelay={startDelay + 1} /> */}
-                            </motion.div>
-
-                            <motion.div className="relative overflow-hidden"
-                                style={{
-                                    border: '40px solid transparent',
-                                    borderImage: `url(${process.env.PUBLIC_URL + '/images/frame.png'}) 100 / 2 / 1 round`
-                                }}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1, transition: { delay: startDelay + 2, duration: duration, ease: ease } }}
-                            >
-                                <video className="mx-auto w-full h-[20vw] rounded-2xl" loop controls>
-                                    <source src={process.env.PUBLIC_URL + '/images/videos/digital-services.mp4'} type="video/mp4" />
-                                    <p className="vjs-no-js">
-                                        To view this video please enable JavaScript, and consider upgrading to a
-                                        web browser
-                                    </p>
-                                </video>
-                                <motion.div className="overlay absolute top-0 left-0 w-full h-full bg-blue-950"
-                                    initial={{ width: "100%" }}
-                                    animate={{ width: 0, transition: { delay: startDelay + 3, duration: duration, ease: ease }, }}
-                                ></motion.div>
-                            </motion.div>
+                <div className="pt-[2vw]">
+                    <motion.div className="page-header mb-[2vw] w-full mx-[3.5vw] flex items-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
+                        style={{
+                            background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
+                            backgroundSize: 'contain'
+                        }}
+                    >
+                        <div className={lang === 'ar' ? 'pr-[5.5vw]' : 'pl-[5.5vw]'}>
+                            <TextAnimation el="h1" className='text-main text-[1.6vw] font-bold pt-[0.3vw]' text={t('digital_services_title')} elDelay={startDelay + 0.1} />
                         </div>
-                        <motion.div className="text-content mt-40"
+                    </motion.div>
+                </div>
+                <div className="w-full h-screen flex flex-row items-start mx-[5vw]">
+                    <div className={`content w-[40vw] ${lang === 'ar' ? 'ml-[15vw]' : 'mr-[15vw]'}`}>
+                        <motion.div className="relative overflow-hidden"
+                            style={{
+                                border: '1vw solid transparent',
+                                borderImage: `url(${process.env.PUBLIC_URL + '/images/frame.png'}) 100 / 2 / 1 round`
+                            }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1, transition: { delay: startDelay + 2, duration: duration, ease: ease } }}
+                        >
+                            <video className="mx-auto w-full h-[20vw] rounded-2xl" loop>
+                                <source src={process.env.PUBLIC_URL + '/images/videos/digital-services.mp4'} type="video/mp4" />
+                                <p className="vjs-no-js">
+                                    To view this video please enable JavaScript, and consider upgrading to a
+                                    web browser
+                                </p>
+                            </video>
+                            <motion.div className="overlay absolute top-0 left-0 w-full h-full bg-blue-950"
+                                initial={{ width: "100%" }}
+                                animate={{ width: 0, transition: { delay: startDelay + 3, duration: duration, ease: ease }, }}
+                            ></motion.div>
+                        </motion.div>
+                        <motion.div className="text-content mt-[3vw]"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
@@ -131,8 +129,8 @@ const DigitalServices = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 0 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text="توفير معلومات فورية" title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text="يسمح النظام الرقمي بتسجيل الملاحظات الميدانية وعرضها فوراً على  لوحة البيانات، مما يسهل على المسؤولين اتخاذ القرارات وتنفيذ التحسينات اللازمة. (Dashboard)" />
+                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('digital_services_point_1_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text={t('digital_services_point_1_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -157,8 +155,8 @@ const DigitalServices = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 1 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع كفاءة موظفي الرقابة الميدانية" title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text="يوفر النظام الرقمي أدوات وتقارير تساعد موظفي الرقابة الميدانية على أداء مهامهم بكفاءة أكبر." />
+                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('digital_services_point_2_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text={t('digital_services_point_2_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -183,8 +181,8 @@ const DigitalServices = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 2 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع جودة الخدمات المقدمة للحجاج" title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text="يؤدي تحسين كفاءة الرقابة الميدانية إلى رفع جودة الخدمات المقدمة للحجاج، حيث يتم اكتشاف الملاحظات ومعالجتها بشكل أسرع." />
+                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('digital_services_point_3_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text={t('digital_services_point_3_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -194,7 +192,7 @@ const DigitalServices = ({ t, i18n }) => {
                             </Swiper>
                         </motion.div>
                     </div>
-                    <motion.div className="content mt-7 w-[40vw] flex flex-row justify-end"
+                    <motion.div className="content mt-[-5vw] w-[40vw]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
@@ -215,7 +213,7 @@ const DigitalServices = ({ t, i18n }) => {
                         >
                             {/* Point 1 */}
                             <SwiperSlide>
-                                <div className="content flex flex-col items-center">
+                                <div className="content flex flex-col items-start">
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
                                         initial="hidden"
@@ -238,7 +236,7 @@ const DigitalServices = ({ t, i18n }) => {
 
                             {/* Point 2 */}
                             <SwiperSlide>
-                                <div className="content flex flex-col items-center">
+                                <div className="content flex flex-col items-start">
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
                                         initial="hidden"
@@ -261,7 +259,7 @@ const DigitalServices = ({ t, i18n }) => {
 
                             {/* Point 3 */}
                             <SwiperSlide>
-                                <div className="content flex flex-col items-center">
+                                <div className="content flex flex-col items-start">
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
                                         initial="hidden"

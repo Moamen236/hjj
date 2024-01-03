@@ -51,7 +51,7 @@ const DigitalInfrastructure = ({ t, i18n }) => {
     return (
         <InactivityDetector>
             <Navbar t={t} i18n={i18n} />
-            <div className='w-full h-screen flex flex-row justify-center items-center'>
+            <div className='w-full h-screen'>
                 <video src={process.env.PUBLIC_URL + video} autoPlay loop={video === '/images/page-2.mp4'} muted className="fixed top-0 left-0 min-w-full min-h-full -z-10"
                     style={{
                         transform: lang === 'ar' ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -59,23 +59,23 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                 >
                     <source src={process.env.PUBLIC_URL + video} type="video/mp4" />
                 </video>
-                <div className={`w-full h-screen flex flex-row justify-between items-start mx-40 pt-20`}>
-                    <div className="content w-[40vw]">
-                        <div className="">
-                            <motion.div className="page-header mb-20"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
-                                style={{
-                                    background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
-                                    backgroundSize: 'contain'
-                                }}
-                            >
-                                <div className={lang === 'ar' ? 'pr-52' : 'pl-52'}>
-                                    <TextAnimation el="h1" className='text-main text-[1.8vw] mb-2 font-bold pt-10' text="بيئة رقمية واحدة لخدمة الحجاج" elDelay={startDelay + 0.2} />
-                                </div>
-                            </motion.div>
+                <div className="pt-[2vw]">
+                    <motion.div className="page-header mb-[2vw] w-full mx-[3.5vw] flex items-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: duration, ease: ease, delay: startDelay + 0.1 }}
+                        style={{
+                            background: lang === 'ar' ? `url(${process.env.PUBLIC_URL + '/images/title-shape.png'}) right center no-repeat` : `url(${process.env.PUBLIC_URL + '/images/title-shape-en.png'}) left center no-repeat`,
+                            backgroundSize: 'contain'
+                        }}
+                    >
+                        <div className={lang === 'ar' ? 'pr-[5.5vw]' : 'pl-[5.5vw]'}>
+                            <TextAnimation el="h1" className='text-main text-[1.6vw] font-bold pt-[0.3vw]' text={t('digital_infrastructure_title')} />
                         </div>
+                    </motion.div>
+                </div>
+                <div className="w-full h-screen flex flex-row items-start mx-[5vw]">
+                    <div className={`content w-[40vw] ${lang === 'ar' ? 'ml-[10vw]' : 'mr-[10vw]'}`}>
                         <motion.div className="text-content mt-[2.1vw]"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -112,8 +112,8 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 0 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text="تكامل المعلومات" title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text="ترابط الأنظمة في بيئة رقمية واحدة تؤدي لتوفير معلومات دقيقة ومحدثة لجميع الإدارات." />
+                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('digital_infrastructure_point_1_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text={t('digital_infrastructure_point_1_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -138,8 +138,8 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 1 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text="رفع كفاءة العمل" title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text="توفير هذه المعلومات ستسهل اتخاذ القرارات وتحسن أداء الشركة." />
+                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('digital_infrastructure_point_2_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text={t('digital_infrastructure_point_2_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -164,8 +164,8 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 2 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text="تحسين الجودة المقدمة للحجاج" title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text="توفير معلومات دقيقة لفريق العمل، مما يسهل حصول الحجاج على الخدمات التي يحتاجونها." />
+                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('digital_infrastructure_point_3_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-2' text={t('digital_infrastructure_point_3_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -174,9 +174,8 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                                 </SwiperSlide>
                             </Swiper>
                         </motion.div>
-
                     </div>
-                    <div className="content w-[40vw]">
+                    <div className="content mt-[-5vw] w-[40vw]">
                         <div className="flex flex-row justify-end">
                             <motion.div className="image w-full"
                                 initial={{ opacity: 0, y: 50 }}

@@ -94,10 +94,10 @@ span {
 
 .page-header {
     background-size: contain;
-    height: 180px;
+    height: 5vw;
 }
 
 .introduction .card {
-    border: 25px solid transparent;
+    border: 1vw solid transparent;
     border-image: url("../../images/frame.png") 120 / 2 / 0 round;
 }
