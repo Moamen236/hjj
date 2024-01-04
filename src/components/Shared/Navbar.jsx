@@ -7,44 +7,26 @@ const Navbar = ({ t, i18n }) => {
   return (
     <nav>
       <div className="nav flex flex-col justify-center items-center">
-        <motion.div className="home"
-          whileTap={{ scale: 0.9 }}
-        >
-          <Link to={'/home'} className={`fixed top-0 ${lang === 'ar' ? 'left-0' : 'right-0'} z-50 bg-main p-[0.6vw] flex justify-center items-center`}>
-            <img src={process.env.PUBLIC_URL + '/images/home.png'} alt="" className='w-[2vw]' />
+        <div className="home">
+          <Link to={'/home'}>
+            <motion.span className={`fixed top-0 ${lang === 'ar' ? 'left-0' : 'right-0'} z-50 bg-main p-[0.6vw] flex justify-center items-center`}
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 6, ease: [0.43, 0.13, 0.23, 0.96] }}
+            >
+              <img src={process.env.PUBLIC_URL + '/images/home.png'} alt="" className='w-[2vw]' />
+            </motion.span>
           </Link>
-          <Link to={'/'} className={`fixed bottom-0 ${lang === 'ar' ? 'left-0' : 'right-0'} z-50 bg-main p-[0.6vw] flex justify-center items-center`}>
-            <i className='fa-solid fa-globe text-[2vw] w-[2vw]'></i>
+          <Link to={'/'}>
+            <motion.span className={`fixed top-0 ${lang === 'ar' ? 'left-20' : 'right-20'} z-50 bg-main p-[0.7vw] flex justify-center items-center`}
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 6.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+            >
+              <i class="fa-solid fa-earth-asia text-[2vw]"></i>
+            </motion.span>
           </Link>
-        </motion.div>
-        {/* <div className="language">
-          <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" data-dropdown-placement="right" className="text-white hover:text-main" type="button">
-            <i className='fa-solid fa-globe fa-2xl'></i>
-          </button>
-
-          <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-            <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-              <li className="px-4 py-2 hover:bg-gray-100 flex cursor-pointer"
-                onClick={() => handleChangeLanguage('ar')}
-              >
-                <img src={process.env.PUBLIC_URL + '/images/flags/ar.png'} alt="Arabic" className='w-6 h-4' />
-                <strong className='text-black mx-4'>Arabic</strong>
-              </li>
-              <li className="px-4 py-2 hover:bg-gray-100 flex cursor-pointer"
-                onClick={() => handleChangeLanguage('en')}
-              >
-                <img src={process.env.PUBLIC_URL + '/images/flags/en.png'} alt="English" className='w-6 h-4' />
-                <strong className='text-black mx-4'>English</strong>
-              </li>
-              <li className="px-4 py-2 hover:bg-gray-100 flex cursor-pointer"
-                onClick={() => handleChangeLanguage('fr')}
-              >
-                <img src={process.env.PUBLIC_URL + '/images/flags/fr.png'} alt="French" className='w-6 h-4' />
-                <strong className='text-black mx-4'>French</strong>
-              </li>
-            </ul>
-          </div>
-        </div> */}
+        </div>
       </div>
     </nav>
   )

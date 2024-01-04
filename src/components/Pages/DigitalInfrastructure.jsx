@@ -6,31 +6,21 @@ import InactivityDetector from '../Shared/InactivityDetector';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
 
-const startDelay = 9;
+const startDelay = 5;
 const duration = 0.3;
 const ease = [0.22, 1, 0.36, 1];
 
 const DigitalInfrastructure = ({ t, i18n }) => {
     const lang = i18n.language;
     const [video, setVideo] = useState('/images/page-1.mp4');
-    const [activeIndex, setActiveIndex] = useState(0);
     useEffect(() => {
         window.scrollTo(0, 0);
         setTimeout(() => {
             setVideo('/images/page-2.mp4');
-        }, 9000);
+        }, 5500);
     }, []);
 
-    const handleSlideChange = (swiper) => {
-        setActiveIndex(swiper.realIndex);
-    };
-
     const listAnimate = {
-        hidden: { opacity: 0, y: 100 },
-        visible: { opacity: 1, y: 0 }
-    }
-
-    const imageYAnimate = {
         hidden: { opacity: 0, y: 100 },
         visible: { opacity: 1, y: 0 }
     }
@@ -70,18 +60,72 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                         }}
                     >
                         <div className={lang === 'ar' ? 'pr-[5.5vw]' : 'pl-[5.5vw]'}>
-                            <TextAnimation el="h1" className='text-main text-[1.6vw] font-bold pt-[0.3vw]' text={t('digital_infrastructure_title')} />
+                            <TextAnimation el="h1" className='text-main text-[1.8vw] font-bold pt-[0.1vw]' text={t('digital_infrastructure_title')} />
                         </div>
                     </motion.div>
                 </div>
                 <div className="w-full h-screen flex flex-row items-start mx-[5vw]">
                     <div className={`content w-[40vw] ${lang === 'ar' ? 'ml-[10vw]' : 'mr-[10vw]'}`}>
-                        <motion.div className="text-content mt-[2.1vw]"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
+                        <motion.div className="text-content mt-[0.8vw]"
+                            // initial={{ opacity: 0 }}
+                            // animate={{ opacity: 1 }}
+                            // transition={{ duration: duration + 0.1, ease: ease, delay: startDelay + 3 }}
                         >
-                            <Swiper
+                            <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
+                                variants={listAnimate}
+                                initial="hidden"
+                                animate="visible"
+                                transition={{ duration: duration, ease: ease, delay: startDelay + 1 }}
+                            >
+                                <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                    variants={listAnimate}
+                                    initial="hidden"
+                                    animate="visible"
+                                    transition={{ duration: duration, ease: ease, delay: startDelay + 1 }}
+                                />
+                                <div className="text mx-[0.8vw]">
+                                    <TextAnimation el="strong" className='text-main font-bold' text={t('digital_infrastructure_point_1_title')} title={true} />
+                                    <TextAnimation el="p" className='mt-[0.4vw]' text={t('digital_infrastructure_point_1_paragraph')} />
+                                </div>
+                            </motion.div>
+
+                            <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
+                                variants={listAnimate}
+                                initial="hidden"
+                                animate="visible"
+                                transition={{ duration: duration, ease: ease, delay: startDelay + 2 }}
+                            >
+                                <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                    variants={listAnimate}
+                                    initial="hidden"
+                                    animate="visible"
+                                    transition={{ duration: duration, ease: ease, delay: startDelay + 2 }}
+                                />
+                                <div className="text mx-[0.8vw]">
+                                    <TextAnimation el="strong" className='text-main font-bold' text={t('digital_infrastructure_point_2_title')} title={true} />
+                                    <TextAnimation el="p" className='mt-[0.4vw]' text={t('digital_infrastructure_point_2_paragraph')} />
+                                </div>
+                            </motion.div>
+
+                            <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
+                                variants={listAnimate}
+                                initial="hidden"
+                                animate="visible"
+                                transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
+                            >
+                                <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                    variants={listAnimate}
+                                    initial="hidden"
+                                    animate="visible"
+                                    transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
+                                />
+                                <div className="text mx-[0.8vw]">
+                                    <TextAnimation el="strong" className='text-main font-bold' text={t('digital_infrastructure_point_3_title')} title={true} />
+                                    <TextAnimation el="p" className='mt-[0.4vw]' text={t('digital_infrastructure_point_3_paragraph')} />
+                                </div>
+                            </motion.div>
+
+                            {/* <Swiper
                                 centeredSlides={true}
                                 autoplay={{
                                     delay: 7000,
@@ -172,7 +216,7 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                                         </div>
                                     </motion.div>
                                 </SwiperSlide>
-                            </Swiper>
+                            </Swiper> */}
                         </motion.div>
                     </div>
                     <div className="content mt-[-5vw] w-[40vw]">

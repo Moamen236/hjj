@@ -5,28 +5,35 @@ import Navbar from '../Shared/Navbar';
 import InactivityDetector from '../Shared/InactivityDetector';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
+import ReactPlayer from 'react-player';
 
-const startDelay = 9;
+const startDelay = 5;
 const duration = 0.3;
 const ease = [0.22, 1, 0.36, 1]
 
 const AccessingHousing = ({ t, i18n }) => {
     const lang = i18n.language;
     const [video, setVideo] = useState('/images/page-1.mp4');
-    const [playVideo, setPlayVideo] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [playVideo, setPlayVideo] = useState(false);
+    const [fade, setFade] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
         setTimeout(() => {
-            setVideo('/images/page-2.mp4');
+            setFade(true);
+            setTimeout(() => {
+                setVideo('/images/page-2.mp4');
+                setFade(false);
+            }, 1000);
+        }, 5500);
+        setTimeout(() => {
             setPlayVideo(true);
-        }, 9000);
+        }, 6500);
     }, []);
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.realIndex);
-        console.log(swiper.realIndex);
     };
 
     const listAnimate = {
@@ -43,7 +50,15 @@ const AccessingHousing = ({ t, i18n }) => {
         <InactivityDetector>
             <Navbar t={t} i18n={i18n} />
             <div className='w-full h-screen overflow-x-hidden'>
-                <video src={process.env.PUBLIC_URL + video} autoPlay loop={video === '/images/page-2.mp4'} muted className="fixed top-0 left-0 min-w-full min-h-full -z-10 transition-all ease-in-out duration-1000"
+                <video src={process.env.PUBLIC_URL + "/images/page-2.mp4"} autoPlay loop muted className="absolute top-0 left-0 -z-20 w-full"
+                    style={{
+                        transform: lang === 'ar' ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                    }}
+                >
+                    <source src={process.env.PUBLIC_URL + "/images/page-2.mp4"} type="video/mp4" />
+                </video>
+                <video src={process.env.PUBLIC_URL + video} autoPlay loop={video === '/images/page-2.mp4'} muted
+                    className={`fixed top-0 left-0 min-w-full min-h-full -z-10 ${fade ? 'opacity-0' : 'opacity-100'}`}
                     style={{
                         transform: lang === 'ar' ? 'rotateY(180deg)' : 'rotateY(0deg)',
                     }}
@@ -62,13 +77,13 @@ const AccessingHousing = ({ t, i18n }) => {
                         }}
                     >
                         <div className={lang === 'ar' ? 'pr-[5.5vw]' : 'pl-[5.5vw]'}>
-                            <TextAnimation el="h1" className='text-main text-[1.6vw] font-bold pt-[0.3vw]' text={t('accessing_housing_title')} />
+                            <TextAnimation el="h1" className='text-main text-[1.8vw] font-bold pt-[0.1vw]' text={t('accessing_housing_title')} />
                         </div>
                     </motion.div>
                 </div>
                 <div className="w-full h-screen flex flex-row items-start mx-[5vw]">
                     <div className={`content w-[40vw] ${lang === 'ar' ? 'ml-[15vw]' : 'mr-[15vw]'}`}>
-                        <motion.div className="relative overflow-hidden"
+                        <motion.div className="relative overflow-hidden p-[0.5vw]"
                             style={{
                                 border: '1vw solid transparent',
                                 borderImage: `url(${process.env.PUBLIC_URL + '/images/frame.png'}) 100 / 2 / 1 round`
@@ -76,13 +91,17 @@ const AccessingHousing = ({ t, i18n }) => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1, transition: { delay: startDelay + 2, duration: duration, ease: ease } }}
                         >
-                            <video id='page-video' className="mx-auto w-full h-[20vw] rounded-2xl" loop autoPlay={playVideo}>
-                                <source src={process.env.PUBLIC_URL + '/images/videos/accessing-housing.mp4'} type="video/mp4" />
-                                <p className="vjs-no-js">
-                                    To view this video please enable JavaScript, and consider upgrading to a
-                                    web browser
-                                </p>
-                            </video>
+                            {
+                                playVideo && (
+                                    <ReactPlayer
+                                        url={process.env.PUBLIC_URL + '/images/videos/accessing-housing.mp4'}
+                                        playing={playVideo}
+                                        loop={true}
+                                        width="100%"
+                                        height="100%"
+                                    />
+                                )
+                            }
                             <motion.div className="overlay absolute top-0 left-0 w-full h-full bg-blue-950"
                                 initial={{ width: "100%" }}
                                 animate={{ width: 0, transition: { delay: startDelay + 3, duration: duration, ease: ease }, }}
@@ -108,7 +127,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                 modules={[EffectFade, Autoplay]}
                             >
                                 <SwiperSlide>
-                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                    <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
                                         variants={listAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 0 ? "visible" : "hidden"}
@@ -125,7 +144,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                                 activeIndex === 0 ? (
                                                     <>
                                                         <TextAnimation el="strong" className='text-main font-bold' text={t('accessing_housing_point_1_title')} title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text={t('accessing_housing_point_1_paragraph')} />
+                                                        <TextAnimation el="p" className='mt-[0.4vw]' text={t('accessing_housing_point_1_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -133,7 +152,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                     </motion.div>
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                    <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
                                         variants={listAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 1 ? "visible" : "hidden"}
@@ -150,7 +169,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                                 activeIndex === 1 ? (
                                                     <>
                                                         <TextAnimation el="strong" className='text-main font-bold' text={t('accessing_housing_point_2_title')} title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text={t('accessing_housing_point_2_paragraph')} />
+                                                        <TextAnimation el="p" className='mt-[0.4vw]' text={t('accessing_housing_point_2_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -158,7 +177,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                     </motion.div>
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <motion.div className='text-white/85 text-[1vw] mb-[1.3vw] font-light leading-30 flex items-start'
+                                    <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
                                         variants={listAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 2 ? "visible" : "hidden"}
@@ -175,7 +194,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                                 activeIndex === 2 ? (
                                                     <>
                                                         <TextAnimation el="strong" className='text-main font-bold' text={t('accessing_housing_point_3_title')} title={true} />
-                                                        <TextAnimation el="p" className='mt-2' text={t('accessing_housing_point_3_paragraph')} />
+                                                        <TextAnimation el="p" className='mt-[0.4vw]' text={t('accessing_housing_point_3_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -185,7 +204,7 @@ const AccessingHousing = ({ t, i18n }) => {
                             </Swiper>
                         </motion.div>
                     </div>
-                    <motion.div className="content mt-[-5vw] w-[40vw]"
+                    <motion.div className="content mt-[-3vw] w-[40vw]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
@@ -213,7 +232,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                         animate={activeIndex === 0 ? "visible" : "hidden"}
                                         transition={{ delay: 0.4, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/housing/system-point-1.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/housing/tablet-point-1.gif'} className="w-full" alt="" />
                                     </motion.div>
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
@@ -221,7 +240,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                         animate={activeIndex === 0 ? "visible" : "hidden"}
                                         transition={{ delay: 0.8, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/housing/tablet-point-1.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/housing/system-point-1.gif'} className="w-full" alt="" />
                                     </motion.div>
                                 </div>
                             </SwiperSlide>
@@ -236,7 +255,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                         animate={activeIndex === 1 ? "visible" : "hidden"}
                                         transition={{ delay: 0.4, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/housing/system-point-2-3.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/housing/tablet-point-1.gif'} className="w-full" alt="" />
                                     </motion.div>
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
@@ -244,7 +263,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                         animate={activeIndex === 1 ? "visible" : "hidden"}
                                         transition={{ delay: 0.8, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/housing/tablet-point-1.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/housing/system-point-2-3.gif'} className="w-full" alt="" />
                                     </motion.div>
                                 </div>
                             </SwiperSlide>
@@ -259,7 +278,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                         animate={activeIndex === 2 ? "visible" : "hidden"}
                                         transition={{ delay: 0.4, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/housing/system-point-2-3.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/housing/happy-point-3.jpg'} className="w-full" alt="" />
                                     </motion.div>
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
@@ -267,7 +286,7 @@ const AccessingHousing = ({ t, i18n }) => {
                                         animate={activeIndex === 2 ? "visible" : "hidden"}
                                         transition={{ delay: 0.8, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/housing/happy-point-3.jpg'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/housing/system-point-2-3.gif'} className="w-full" alt="" />
                                     </motion.div>
                                 </div>
                             </SwiperSlide>

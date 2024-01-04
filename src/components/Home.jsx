@@ -33,12 +33,12 @@ const Home = ({ t }) => {
             >
               <img src={process.env.PUBLIC_URL + '/images/logo.png'} className='w-full' alt="" />
             </motion.div>
-            <motion.h1 className='text-white text-[1.2vw] text-center w-[40vw] mx-auto'
+            <motion.h1 className='text-white text-[1.2vw] text-center w-[40vw] mx-auto font-bold'
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
             >
-              تعرف على إستراتيجية التحول الرقمي  <br />لخدمة ضيوف الرحمن
+              {t('home_title_part_one')} <br />  {t('home_title_part_two')}
             </motion.h1>
             <div className="grid grid-rows-2 grid-flow-col gap-5">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1, duration: 0.8, } }}
