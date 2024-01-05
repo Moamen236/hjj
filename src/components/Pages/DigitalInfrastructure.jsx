@@ -3,8 +3,6 @@ import { motion } from 'framer-motion'
 import { TextAnimation } from '../Shared/TextAnimation';
 import Navbar from '../Shared/Navbar';
 import InactivityDetector from '../Shared/InactivityDetector';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
 
 const startDelay = 5;
 const duration = 0.3;
@@ -219,7 +217,7 @@ const DigitalInfrastructure = ({ t, i18n }) => {
                             </Swiper> */}
                         </motion.div>
                     </div>
-                    <div className="content mt-[-5vw] w-[40vw]">
+                    <div className="content w-[40vw]">
                         <div className="flex flex-row justify-end">
                             <motion.div className="image w-full"
                                 initial={{ opacity: 0, y: 50 }}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { TextAnimation } from '../Shared/TextAnimation';
 import Navbar from '../Shared/Navbar';
@@ -126,6 +126,7 @@ const DigitalServices = ({ t, i18n }) => {
                                 speed={1000}
                                 onSlideChange={handleSlideChange}
                                 modules={[EffectFade, Autoplay]}
+                                allowTouchMove={false}
                             >
                                 <SwiperSlide>
                                     <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
@@ -225,6 +226,7 @@ const DigitalServices = ({ t, i18n }) => {
                             speed={1000}
                             onSlideChange={handleSlideChange}
                             modules={[EffectFade, Autoplay]}
+                            allowTouchMove={false}
                         >
                             {/* Point 1 */}
                             <SwiperSlide>

@@ -18,12 +18,12 @@ const Navbar = ({ t, i18n }) => {
             </motion.span>
           </Link>
           <Link to={'/'}>
-            <motion.span className={`fixed top-0 ${lang === 'ar' ? 'left-20' : 'right-20'} z-50 bg-main p-[0.7vw] flex justify-center items-center`}
+            <motion.span className={`fixed top-0 ${lang === 'ar' ? 'left-[4vw]' : 'right-[4vw]'} z-50 bg-main p-[0.7vw] flex justify-center items-center`}
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 6.5, ease: [0.43, 0.13, 0.23, 0.96] }}
             >
-              <i class="fa-solid fa-earth-asia text-[2vw]"></i>
+              <i className="fa-solid fa-earth-asia text-[2vw]"></i>
             </motion.span>
           </Link>
         </div>

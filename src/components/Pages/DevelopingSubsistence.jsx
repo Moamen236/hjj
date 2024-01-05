@@ -25,7 +25,7 @@ const DevelopingSubsistence = ({ t, i18n }) => {
             setTimeout(() => {
                 setVideo('/images/page-2.mp4');
                 setFade(false);
-            }, 500);
+            }, 1000);
         }, 5500);
         setTimeout(() => {
             setPlayVideo(true);
@@ -124,6 +124,7 @@ const DevelopingSubsistence = ({ t, i18n }) => {
                                 speed={1000}
                                 onSlideChange={handleSlideChange}
                                 modules={[EffectFade, Autoplay]}
+                                allowTouchMove={false}
                             >
                                 <SwiperSlide>
                                     <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
@@ -223,6 +224,7 @@ const DevelopingSubsistence = ({ t, i18n }) => {
                             speed={1000}
                             onSlideChange={handleSlideChange}
                             modules={[EffectFade, Autoplay]}
+                            allowTouchMove={false}
                         >
                             {/* Point 1 */}
                             <SwiperSlide>
@@ -231,17 +233,17 @@ const DevelopingSubsistence = ({ t, i18n }) => {
                                         variants={imageYAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 0 ? "visible" : "hidden"}
-                                        transition={{ delay: 0.4, duration: duration }}
+                                        transition={{ delay: 0.8, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/system-point-1.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/racaya-point-1.png'} className="w-full" alt="" />
                                     </motion.div>
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 0 ? "visible" : "hidden"}
-                                        transition={{ delay: 0.8, duration: duration }}
+                                        transition={{ delay: 0.4, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/racaya-point-1.png'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/system-point-1.gif'} className="w-full" alt="" />
                                     </motion.div>
                                 </div>
                             </SwiperSlide>
@@ -254,17 +256,17 @@ const DevelopingSubsistence = ({ t, i18n }) => {
                                         variants={imageYAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 1 ? "visible" : "hidden"}
-                                        transition={{ delay: 0.4, duration: duration }}
+                                        transition={{ delay: 0.8, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/system-point-2.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/tablet-point-3.gif'} className="w-full" alt="" />
                                     </motion.div>
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 1 ? "visible" : "hidden"}
-                                        transition={{ delay: 0.8, duration: duration }}
+                                        transition={{ delay: 0.4, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/tablet-point-3.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/system-point-2.gif'} className="w-full" alt="" />
                                     </motion.div>
                                 </div>
                             </SwiperSlide>
@@ -277,17 +279,17 @@ const DevelopingSubsistence = ({ t, i18n }) => {
                                         variants={imageYAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 2 ? "visible" : "hidden"}
-                                        transition={{ delay: 0.4, duration: duration }}
+                                        transition={{ delay: 0.8, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/system-point-3.gif'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/pic-point-3.png'} className="w-full" alt="" />
                                     </motion.div>
                                     <motion.div className="w-[30vw]"
                                         variants={imageYAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 2 ? "visible" : "hidden"}
-                                        transition={{ delay: 0.8, duration: duration }}
+                                        transition={{ delay: 0.4, duration: duration }}
                                     >
-                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/pic-point-3.png'} className="w-full" alt="" />
+                                        <img src={process.env.PUBLIC_URL + '/images/subsistence/system-point-3.gif'} className="w-full" alt="" />
                                     </motion.div>
                                 </div>
                             </SwiperSlide>

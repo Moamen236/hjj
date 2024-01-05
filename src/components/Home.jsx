@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import InactivityDetector from './Shared/InactivityDetector';
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
 const Home = ({ t }) => {
-  const [isClicked, setIsClicked] = useState(false);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const handleClick = () => {
-    setIsClicked(true);
-  };
   return (
     <InactivityDetector>
       <video src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} autoPlay loop muted className="absolute top-0 left-0 -z-10 w-full">
         <source src={process.env.PUBLIC_URL + "/images/intro-overlay.mp4"} type="video/mp4" />
       </video>
-      <div className='w-full h-screen flex flex-row justify-center items-center pb-[1vw] pt-[2vw]'>
+      <div className='w-full h-screen flex flex-row justify-center items-center pb-[1vw] py-[2vw]'>
         <div className="w-[65vw] mx-auto">
           <motion.div className="content"
             initial={{ opacity: 0 }}
@@ -26,7 +21,7 @@ const Home = ({ t }) => {
             exit={{ opacity: 0 }}
             transition={transition}
           >
-            <motion.div className="image w-1/4 mx-auto mb-[1.5vw]"
+            <motion.div className="image w-1/4 mx-auto mb-[0.8vw]"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
@@ -77,9 +72,7 @@ const Home = ({ t }) => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.6, duration: 0.8, } }}
                   className="row-start-2 h-fit transition-all px-4 relative z-40 w-[22vw] text-center"
                 >
-                  <Link to={'/digital-infrastructure'}
-                    onClick={handleClick}
-                  >
+                  <Link to={'/digital-infrastructure'}>
                     <div className="py-2 px-3 relative">
                       <div className="image w-[20vw] mx-auto">
                         <motion.img src={process.env.PUBLIC_URL + '/images/main/3.gif'} className='w-full' alt=""

@@ -25,7 +25,7 @@ const DevelopingAccommodation = ({ t, i18n }) => {
             setTimeout(() => {
                 setVideo('/images/page-2.mp4');
                 setFade(false);
-            }, 500);
+            }, 1000);
         }, 5500);
         setTimeout(() => {
             setPlayVideo(true);
@@ -57,7 +57,7 @@ const DevelopingAccommodation = ({ t, i18n }) => {
                 >
                     <source src={process.env.PUBLIC_URL + "/images/page-2.mp4"} type="video/mp4" />
                 </video>
-                <video src={process.env.PUBLIC_URL + video} autoPlay loop={video === '/images/page-2.mp4'} muted 
+                <video src={process.env.PUBLIC_URL + video} autoPlay loop={video === '/images/page-2.mp4'} muted
                     className={`fixed top-0 left-0 min-w-full min-h-full -z-10 ${fade ? 'opacity-0' : 'opacity-100'}`}
                     style={{
                         transform: lang === 'ar' ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -125,6 +125,7 @@ const DevelopingAccommodation = ({ t, i18n }) => {
                                 speed={1000}
                                 onSlideChange={handleSlideChange}
                                 modules={[EffectFade, Autoplay]}
+                                allowTouchMove={false}
                             >
                                 <SwiperSlide>
                                     <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
@@ -224,6 +225,7 @@ const DevelopingAccommodation = ({ t, i18n }) => {
                             speed={1000}
                             onSlideChange={handleSlideChange}
                             modules={[EffectFade, Autoplay]}
+                            allowTouchMove={false}
                         >
                             <SwiperSlide>
                                 <div className="content flex flex-col items-start">
