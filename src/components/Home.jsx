@@ -28,7 +28,7 @@ const Home = ({ t }) => {
             >
               <img src={process.env.PUBLIC_URL + '/images/logo.png'} className='w-full' alt="" />
             </motion.div>
-            <motion.h1 className='text-white text-[1.2vw] text-center w-[40vw] mx-auto font-bold'
+            <motion.h1 className='text-white text-[1.4vw] text-center w-[40vw] mx-auto font-bold'
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
@@ -46,7 +46,7 @@ const Home = ({ t }) => {
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <h3 className="mt-3 text-[1vw] font-bold text-main">
+                    <h3 className="mt-3 text-[1.1vw] font-bold text-main">
                       {t('home_accessing_housing_title')}
                     </h3>
                   </div>
@@ -62,7 +62,7 @@ const Home = ({ t }) => {
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <h3 className="mt-3 text-[1vw] font-bold text-main">
+                    <h3 className="mt-3 text-[1.1vw] font-bold text-main">
                       {t('home_digital_services_title')}
                     </h3>
                   </div>
@@ -79,7 +79,7 @@ const Home = ({ t }) => {
                           whileTap={{ scale: 1.1 }}
                         />
                       </div>
-                      <h3 className="mt-3 text-[1vw] font-bold text-main"
+                      <h3 className="mt-3 text-[1.2vw] font-bold text-main"
                         animate={{ opacity: 1 }}
                       >
                         {t('home_digital_infrastructure_title')}
@@ -98,7 +98,7 @@ const Home = ({ t }) => {
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <h3 className="mt-3 text-[1vw] font-bold text-main">
+                    <h3 className="mt-3 text-[1.1vw] font-bold text-main">
                       {t('home_developing_subsistence_title')}
                     </h3>
                   </div>
@@ -114,7 +114,7 @@ const Home = ({ t }) => {
                         whileTap={{ scale: 1.1 }}
                       />
                     </div>
-                    <h3 className="mt-3 text-[1vw] font-bold text-main">
+                    <h3 className="mt-3 text-[1.1vw] font-bold text-main">
                       {t('home_developing_accommodation_title')}
                     </h3>
                   </div>

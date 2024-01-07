@@ -77,7 +77,7 @@ const AccessingHousing = ({ t, i18n }) => {
                         }}
                     >
                         <div className={lang === 'ar' ? 'pr-[5.5vw]' : 'pl-[5.5vw]'}>
-                            <TextAnimation el="h1" className='text-main text-[1.8vw] font-bold pt-[0.1vw]' text={t('accessing_housing_title')} />
+                            <TextAnimation el="h1" className='text-main text-[2vw] font-bold pt-[0.1vw]' text={t('accessing_housing_title')} />
                         </div>
                     </motion.div>
                 </div>
@@ -128,13 +128,13 @@ const AccessingHousing = ({ t, i18n }) => {
                                 allowTouchMove={false}
                             >
                                 <SwiperSlide>
-                                    <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
+                                    <motion.div className='text-white/85 mb-[2vw] font-light leading-30 flex items-start'
                                         variants={listAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 0 ? "visible" : "hidden"}
                                         transition={{ duration: duration }}
                                     >
-                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw] pt-[0.4vw]'
                                             variants={listAnimate}
                                             initial="hidden"
                                             animate={activeIndex === 0 ? "visible" : "hidden"}
@@ -144,8 +144,8 @@ const AccessingHousing = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 0 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('accessing_housing_point_1_title')} title={true} />
-                                                        <TextAnimation el="p" className='mt-[0.4vw]' text={t('accessing_housing_point_1_paragraph')} />
+                                                        <TextAnimation el="strong" className='text-main font-bold text-[1.6vw]' text={t('accessing_housing_point_1_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-[0.4vw] text-[1.2vw]' text={t('accessing_housing_point_1_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -153,13 +153,13 @@ const AccessingHousing = ({ t, i18n }) => {
                                     </motion.div>
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
+                                    <motion.div className='text-white/85 mb-[2vw] font-light leading-30 flex items-start'
                                         variants={listAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 1 ? "visible" : "hidden"}
                                         transition={{ duration: duration }}
                                     >
-                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw] pt-[0.4vw]'
                                             variants={listAnimate}
                                             initial="hidden"
                                             animate={activeIndex === 1 ? "visible" : "hidden"}
@@ -169,8 +169,8 @@ const AccessingHousing = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 1 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('accessing_housing_point_2_title')} title={true} />
-                                                        <TextAnimation el="p" className='mt-[0.4vw]' text={t('accessing_housing_point_2_paragraph')} />
+                                                        <TextAnimation el="strong" className='text-main font-bold text-[1.6vw]' text={t('accessing_housing_point_2_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-[0.4vw] text-[1.2vw] ' text={t('accessing_housing_point_2_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -178,13 +178,13 @@ const AccessingHousing = ({ t, i18n }) => {
                                     </motion.div>
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <motion.div className='text-white/85 text-[1.2vw] mb-[2vw] font-light leading-30 flex items-start'
+                                    <motion.div className='text-white/85 mb-[2vw] font-light leading-30 flex items-start'
                                         variants={listAnimate}
                                         initial="hidden"
                                         animate={activeIndex === 2 ? "visible" : "hidden"}
                                         transition={{ duration: duration }}
                                     >
-                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw]'
+                                        <motion.img src={process.env.PUBLIC_URL + '/images/list.png'} alt="" className='w-[2vw] pt-[0.4vw]'
                                             variants={listAnimate}
                                             initial="hidden"
                                             animate={activeIndex === 2 ? "visible" : "hidden"}
@@ -194,8 +194,8 @@ const AccessingHousing = ({ t, i18n }) => {
                                             {
                                                 activeIndex === 2 ? (
                                                     <>
-                                                        <TextAnimation el="strong" className='text-main font-bold' text={t('accessing_housing_point_3_title')} title={true} />
-                                                        <TextAnimation el="p" className='mt-[0.4vw]' text={t('accessing_housing_point_3_paragraph')} />
+                                                        <TextAnimation el="strong" className='text-main font-bold text-[1.6vw]' text={t('accessing_housing_point_3_title')} title={true} />
+                                                        <TextAnimation el="p" className='mt-[0.4vw] text-[1.2vw]' text={t('accessing_housing_point_3_paragraph')} />
                                                     </>
                                                 ) : null
                                             }
@@ -205,7 +205,7 @@ const AccessingHousing = ({ t, i18n }) => {
                             </Swiper>
                         </motion.div>
                     </div>
-                    <motion.div className="content mt-[-3vw] w-[40vw]"
+                    <motion.div className="content mt-[-2vw] w-[40vw]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: duration, ease: ease, delay: startDelay + 3 }}
