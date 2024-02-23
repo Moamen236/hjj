@@ -101,3 +101,8 @@ span {
     border: 1vw solid transparent;
     border-image: url("../../images/frame.png") 120 / 2 / 0 round;
 }
+
+.content .swiper .swiper-wrapper .swiper-slide .content.flex.flex-col.items-start div:last-child{
+    width: 22vw !important;
+    margin: 0 3vw !important;
+}
